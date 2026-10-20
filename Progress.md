@@ -21,6 +21,7 @@
 - **Tests**: 176 unit tests passing.
 - **Docs**: README, EN/ID docs, screenshots from the automated tour (`--screenshots`).
 - **Release**: moved into the `SyubadubinStudios/HappyCooking` repo. Windows installer (Inno Setup, English + Indonesian wizard, per-user install) and portable zip built with `installer/build-installer.ps1`. Smoke-tested: silent install, full screenshot tour from the installed copy, clean uninstall.
+- **Android release**: signed APK (arm64 + x64) built with `installer/build-android.ps1` and attached to v1.0.0. Not yet run on a device or emulator (the local emulator needs WHPX).
 
 ### Status by SDD module
 
@@ -77,6 +78,7 @@
 - **Test**: 176 unit test lulus.
 - **Dokumentasi**: README, dokumen EN/ID, screenshot dari tur otomatis (`--screenshots`).
 - **Rilis**: dipindahkan ke repo `SyubadubinStudios/HappyCooking`. Installer Windows (Inno Setup, wizard Inggris + Indonesia, pemasangan per pengguna) dan zip portable dibuat dengan `installer/build-installer.ps1`. Diuji: pemasangan senyap, tur screenshot penuh dari hasil instalasi, uninstall bersih.
+- **Rilis Android**: APK bertanda tangan (arm64 + x64) dibuat dengan `installer/build-android.ps1` dan dilampirkan di v1.0.0. Belum dijalankan di perangkat atau emulator (emulator lokal butuh WHPX).
 
 ### Status per modul SDD
 

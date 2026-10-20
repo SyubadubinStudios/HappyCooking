@@ -19,6 +19,7 @@ python tools/art/optimize_screenshots.py docs/screenshots        # PNG -> JPEG f
 python tools/art/prepare_art.py                                  # 2D art: assets/art -> App/Assets/Images
 "C:/Program Files/Blender Foundation/Blender 5.2/blender.exe" -b --factory-startup -P tools/blender/process_assets.py   # 3D models
 powershell -ExecutionPolicy Bypass -File installer/build-installer.ps1   # Windows installer (Inno Setup 6)
+powershell -ExecutionPolicy Bypass -File installer/build-android.ps1 -KeyFile <keyfile>   # signed release APK (keystore kept outside the repo)
 ```
 
 Other flags: `--skip-title`, `--db <path>`. Package versions are central in `Directory.Packages.props`.

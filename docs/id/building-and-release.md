@@ -55,7 +55,19 @@ Lampirkan file itu ke rilis GitHub.
 dotnet publish src/HappyCooking.Android -c Release
 ```
 
-Perintah ini menghasilkan APK untuk `android-arm64` dan `android-x64` (minimal API 24, mode landscape). Tandatangani dengan keystore milikmu sebelum dibagikan.
+Perintah ini menghasilkan APK untuk `android-arm64` dan `android-x64` (minimal API 24, mode landscape).
+
+Untuk APK rilis yang ditandatangani, gunakan skripnya. Keystore tidak pernah disimpan di repo; simpan cadangannya (beserta file kata sandinya), karena setiap pembaruan berikutnya wajib ditandatangani dengan kunci yang sama:
+
+```powershell
+# sekali saja: buat keystore (keytool ada di JDK)
+keytool -genkeypair -keystore happycooking.keystore -alias happycooking -keyalg RSA -keysize 2048 -validity 10000
+
+# file kunci berisi tiga baris: HC_KEYSTORE=<lokasi>, HC_KEY_ALIAS=happycooking, HC_KEY_PASS=<kata sandi>
+powershell -ExecutionPolicy Bypass -File installer/build-android.ps1 -KeyFile C:\path\happycooking.keystore.txt
+```
+
+Hasil: `artifacts/android/HappyCooking-1.0.0-android.apk`. Pasang dengan mengaktifkan "Instal aplikasi tidak dikenal" di perangkat, atau lewat `adb install`.
 
 ## iOS
 

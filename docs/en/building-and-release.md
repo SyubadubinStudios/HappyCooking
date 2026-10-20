@@ -55,7 +55,19 @@ Attach that file to a GitHub release.
 dotnet publish src/HappyCooking.Android -c Release
 ```
 
-This produces an APK for `android-arm64` and `android-x64` (min API 24, landscape). Sign it with your keystore for distribution.
+This produces an APK for `android-arm64` and `android-x64` (min API 24, landscape).
+
+For a signed release APK use the script. The keystore never goes in the repo; keep it (and its password file) backed up, because every future update must be signed with the same key:
+
+```powershell
+# one time: create a keystore (keytool ships with the JDK)
+keytool -genkeypair -keystore happycooking.keystore -alias happycooking -keyalg RSA -keysize 2048 -validity 10000
+
+# key file with three lines: HC_KEYSTORE=<path>, HC_KEY_ALIAS=happycooking, HC_KEY_PASS=<password>
+powershell -ExecutionPolicy Bypass -File installer/build-android.ps1 -KeyFile C:\path\happycooking.keystore.txt
+```
+
+Output: `artifacts/android/HappyCooking-1.0.0-android.apk`. Install it by enabling "Install unknown apps" on the device, or with `adb install`.
 
 ## iOS
 
