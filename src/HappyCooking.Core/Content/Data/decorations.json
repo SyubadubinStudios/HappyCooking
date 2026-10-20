@@ -1,0 +1,10 @@
+[
+  { "id": "d_flower_pot", "name": { "en": "Flower pot", "id": "Pot bunga" }, "price": 40, "rating": 1, "shape": "pot", "color": "#FF6FB5" },
+  { "id": "d_lantern", "name": { "en": "Red lantern", "id": "Lampion merah" }, "price": 60, "rating": 2, "shape": "lantern", "color": "#E8423F" },
+  { "id": "d_plant", "name": { "en": "Monstera plant", "id": "Tanaman monstera" }, "price": 70, "rating": 2, "shape": "plant", "color": "#3C9A3C" },
+  { "id": "d_balloons", "name": { "en": "Party balloons", "id": "Balon pesta" }, "price": 50, "rating": 1, "shape": "balloons", "color": "#FFD45C" },
+  { "id": "d_fountain", "name": { "en": "Chocolate fountain", "id": "Air mancur cokelat" }, "price": 160, "rating": 4, "shape": "fountain", "color": "#5A3221" },
+  { "id": "d_aquarium", "name": { "en": "Fish tank", "id": "Akuarium" }, "price": 140, "rating": 3, "shape": "aquarium", "color": "#3EC6D6" },
+  { "id": "d_rug", "name": { "en": "Batik rug", "id": "Karpet batik" }, "price": 90, "rating": 2, "shape": "rug", "color": "#8C4A26" },
+  { "id": "d_piano", "name": { "en": "Tiny piano", "id": "Piano mungil" }, "price": 220, "rating": 5, "shape": "piano", "color": "#2B2A6B" }
+]

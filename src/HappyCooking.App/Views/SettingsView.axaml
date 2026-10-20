@@ -1,0 +1,74 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:HappyCooking.App.ViewModels"
+             xmlns:svc="using:HappyCooking.App.Services"
+             x:Class="HappyCooking.App.Views.SettingsView"
+             x:DataType="vm:SettingsViewModel">
+  <DockPanel Margin="{StaticResource PageMargin}">
+    <TextBlock DockPanel.Dock="Top" Text="{svc:Tr settings.title}" Classes="display onDark" Margin="6,0,0,10" />
+
+    <ScrollViewer>
+      <WrapPanel ItemSpacing="16" LineSpacing="16" HorizontalAlignment="Center">
+
+        <Border Classes="sticker" Width="400" VerticalAlignment="Top">
+          <StackPanel Spacing="12">
+            <TextBlock Text="{svc:Tr settings.player}" Classes="heading" />
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBox Text="{Binding PlayerName}" MaxLength="16" />
+              <Button Grid.Column="1" Classes="small go" Margin="8,0,0,0" Content="{svc:Tr settings.save}" Command="{Binding SaveNameCommand}" />
+            </Grid>
+
+            <TextBlock Text="{svc:Tr settings.language}" Classes="heading" />
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <Button Content="English" Classes.butter="{Binding IsEnglish}" Command="{Binding SetLanguageCommand}" CommandParameter="en" />
+              <Button Content="Bahasa Indonesia" Classes.butter="{Binding !IsEnglish}" Command="{Binding SetLanguageCommand}" CommandParameter="id" />
+            </StackPanel>
+
+            <TextBlock Text="{svc:Tr settings.sound}" Classes="heading" />
+            <Grid ColumnDefinitions="110,*" RowDefinitions="Auto,Auto">
+              <TextBlock Text="{svc:Tr settings.music}" VerticalAlignment="Center" FontWeight="Bold" />
+              <Slider Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding MusicVolume}" />
+              <TextBlock Grid.Row="1" Text="{svc:Tr settings.effects}" VerticalAlignment="Center" FontWeight="Bold" />
+              <Slider Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding EffectsVolume}" />
+            </Grid>
+          </StackPanel>
+        </Border>
+
+        <Border Classes="sticker" Width="400" VerticalAlignment="Top">
+          <StackPanel Spacing="12">
+            <TextBlock Text="{svc:Tr settings.graphics}" Classes="heading" />
+            <TextBlock Text="{svc:Tr settings.graphicsHelp}" TextWrapping="Wrap" FontSize="14" />
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <Button Content="{svc:Tr settings.low}" Classes.butter="{Binding IsLow}" Command="{Binding SetGraphicsCommand}" CommandParameter="0" />
+              <Button Content="{svc:Tr settings.medium}" Classes.butter="{Binding IsMedium}" Command="{Binding SetGraphicsCommand}" CommandParameter="1" />
+              <Button Content="{svc:Tr settings.high}" Classes.butter="{Binding IsHigh}" Command="{Binding SetGraphicsCommand}" CommandParameter="2" />
+            </StackPanel>
+
+            <TextBlock Text="{svc:Tr settings.cloud}" Classes="heading" />
+            <TextBlock Text="{svc:Tr settings.cloudHelp}" TextWrapping="Wrap" FontSize="14" />
+            <TextBox Text="{Binding CloudFolder}" Watermark="C:\Users\...\OneDrive\HappyCooking" />
+            <Button Classes="go" Content="{svc:Tr settings.syncNow}" Command="{Binding SyncCloudCommand}" HorizontalAlignment="Left" />
+            <TextBlock Text="{Binding CloudStatus}" FontWeight="Bold" TextWrapping="Wrap" />
+            <TextBlock Text="{Binding SaveLocation}" Classes="small" TextWrapping="Wrap" />
+          </StackPanel>
+        </Border>
+
+        <!-- About -->
+        <Border Classes="sticker warm" Width="400" VerticalAlignment="Top">
+          <StackPanel Spacing="10">
+            <Image Source="avares://HappyCooking.App/Assets/Images/logo.png" MaxWidth="300" HorizontalAlignment="Left" />
+            <TextBlock Text="{svc:Tr about.tagline}" Classes="heading" FontSize="18" />
+            <TextBlock>
+              <Run Text="{svc:Tr about.version}" /><Run Text=" " /><Run Text="{Binding Version}" />
+            </TextBlock>
+            <Border Classes="chip" Background="{StaticResource TomatoBrush}" CornerRadius="14" Padding="12,8">
+              <TextBlock Text="{Binding Credit}" Classes="onDark" FontWeight="ExtraBold" TextWrapping="Wrap" />
+            </Border>
+            <TextBlock Text="{svc:Tr about.tech}" TextWrapping="Wrap" FontSize="14" />
+            <TextBlock Text="{svc:Tr about.licenses}" TextWrapping="Wrap" Classes="small" />
+          </StackPanel>
+        </Border>
+      </WrapPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

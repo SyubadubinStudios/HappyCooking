@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/mobile/">
+    <Project Path="src/HappyCooking.Android/HappyCooking.Android.csproj" />
+    <Project Path="src/HappyCooking.iOS/HappyCooking.iOS.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/HappyCooking.App/HappyCooking.App.csproj" />
+    <Project Path="src/HappyCooking.Core/HappyCooking.Core.csproj" />
+    <Project Path="src/HappyCooking.Data/HappyCooking.Data.csproj" />
+    <Project Path="src/HappyCooking.Desktop/HappyCooking.Desktop.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/HappyCooking.Core.Tests/HappyCooking.Core.Tests.csproj" />
+  </Folder>
+</Solution>

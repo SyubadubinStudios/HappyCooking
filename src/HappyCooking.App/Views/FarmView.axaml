@@ -1,0 +1,95 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:HappyCooking.App.ViewModels"
+             xmlns:c="using:HappyCooking.App.Controls"
+             xmlns:svc="using:HappyCooking.App.Services"
+             x:Class="HappyCooking.App.Views.FarmView"
+             x:DataType="vm:FarmViewModel">
+  <Grid>
+    <c:StageHost Stage="{Binding Stage}" />
+
+    <Grid Margin="{StaticResource PageMargin}" ColumnDefinitions="330,*,330">
+      <!-- Plots -->
+      <Border Classes="sticker" VerticalAlignment="Top" Padding="12">
+        <StackPanel Spacing="10">
+          <Grid ColumnDefinitions="*,Auto">
+            <TextBlock Text="{svc:Tr farm.title}" Classes="heading" />
+            <TextBlock Grid.Column="1" Text="{Binding WeatherText}" FontWeight="Bold" VerticalAlignment="Center" FontSize="13" />
+          </Grid>
+          <ScrollViewer MaxHeight="420">
+            <ItemsControl ItemsSource="{Binding Plots}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate><UniformGrid Columns="2" /></ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:PlotCard">
+                  <Button Margin="3" Padding="8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Classes.sel="{Binding IsSelected}"
+                          Command="{Binding $parent[UserControl].((vm:FarmViewModel)DataContext).SelectPlotCommand}" CommandParameter="{Binding}">
+                    <Button.Styles>
+                      <Style Selector="Button.sel"><Setter Property="Background" Value="{StaticResource ButterBrush}" /></Style>
+                    </Button.Styles>
+                    <StackPanel Spacing="4">
+                      <StackPanel Orientation="Horizontal" Spacing="6">
+                        <Border Width="22" Height="22" CornerRadius="11" Background="{StaticResource InkBrush}">
+                          <TextBlock Text="{Binding Number}" Foreground="White" FontSize="12" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Ellipse Width="14" Height="14" Fill="{Binding Swatch}" IsVisible="{Binding !IsEmpty}" />
+                        <TextBlock Text="{Binding Title}" FontFamily="{StaticResource BodyFont}" FontWeight="ExtraBold" FontSize="14" TextTrimming="CharacterEllipsis" />
+                      </StackPanel>
+                      <ProgressBar Value="{Binding Growth}" Maximum="100" Height="8" MinHeight="8" IsVisible="{Binding !IsEmpty}" />
+                      <TextBlock Text="{Binding Status}" FontFamily="{StaticResource BodyFont}" FontSize="12" FontWeight="SemiBold" />
+                    </StackPanel>
+                  </Button>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </ScrollViewer>
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button Classes="small go" Content="{svc:Tr farm.harvestAll}" Command="{Binding HarvestAllCommand}" />
+            <Button Classes="small" IsEnabled="{Binding CanBuyPlot}" Command="{Binding BuyPlotCommand}">
+              <StackPanel Orientation="Horizontal" Spacing="4">
+                <TextBlock Text="{svc:Tr farm.newPlot}" FontFamily="{StaticResource DisplayFont}" FontSize="15" />
+                <Image Source="{Binding CoinIcon}" Width="18" />
+                <TextBlock Text="{Binding PlotPrice}" FontFamily="{StaticResource DisplayFont}" FontSize="15" />
+              </StackPanel>
+            </Button>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <!-- Seeds / harvest for the selected plot -->
+      <Border Grid.Column="2" Classes="sticker warm" VerticalAlignment="Top" Padding="12">
+        <StackPanel Spacing="10">
+          <Button Classes="primary" HorizontalAlignment="Stretch" IsVisible="{Binding SelectedIsReady}" Content="{svc:Tr farm.harvest}" Command="{Binding HarvestCommand}" />
+          <TextBlock Text="{svc:Tr farm.seeds}" Classes="heading" IsVisible="{Binding SelectedIsEmpty}" />
+          <TextBlock Text="{svc:Tr farm.growing}" IsVisible="{Binding !SelectedIsEmpty}" TextWrapping="Wrap" FontWeight="SemiBold" />
+          <ScrollViewer MaxHeight="440" IsVisible="{Binding SelectedIsEmpty}">
+            <ItemsControl ItemsSource="{Binding Seeds}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate><StackPanel Spacing="6" /></ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:SeedCard">
+                  <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="8,4" MinHeight="40"
+                          Command="{Binding $parent[UserControl].((vm:FarmViewModel)DataContext).PlantCommand}" CommandParameter="{Binding}">
+                    <Grid ColumnDefinitions="Auto,*,Auto">
+                      <Ellipse Width="22" Height="22" Fill="{Binding Swatch}" Stroke="{StaticResource InkBrush}" StrokeThickness="2" />
+                      <StackPanel Grid.Column="1" Margin="8,0">
+                        <TextBlock Text="{Binding Name}" FontFamily="{StaticResource BodyFont}" FontWeight="ExtraBold" FontSize="14" />
+                        <TextBlock Text="{Binding Detail}" FontFamily="{StaticResource BodyFont}" FontSize="12" />
+                      </StackPanel>
+                      <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="3" VerticalAlignment="Center">
+                        <Image Source="{Binding $parent[UserControl].((vm:FarmViewModel)DataContext).CoinIcon}" Width="18" />
+                        <TextBlock Text="{Binding Price}" FontSize="15" />
+                      </StackPanel>
+                    </Grid>
+                  </Button>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </ScrollViewer>
+        </StackPanel>
+      </Border>
+    </Grid>
+  </Grid>
+</UserControl>

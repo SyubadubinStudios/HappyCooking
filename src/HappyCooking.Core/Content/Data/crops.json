@@ -1,0 +1,14 @@
+[
+  { "id": "chili", "ingredient": "chili", "seedPrice": 4, "growSeconds": 45, "yield": 3, "xp": 4, "color": "#E8302A" },
+  { "id": "tomato", "ingredient": "tomato", "seedPrice": 4, "growSeconds": 60, "yield": 3, "xp": 4, "color": "#F0472E" },
+  { "id": "rice", "ingredient": "rice", "seedPrice": 3, "growSeconds": 90, "yield": 4, "xp": 5, "color": "#E9E2B0" },
+  { "id": "lemongrass", "ingredient": "lemongrass", "seedPrice": 3, "growSeconds": 50, "yield": 3, "xp": 4, "color": "#B9D96B" },
+  { "id": "basil", "ingredient": "basil", "seedPrice": 3, "growSeconds": 40, "yield": 3, "xp": 3, "color": "#3C9A3C" },
+  { "id": "corn", "ingredient": "corn", "seedPrice": 4, "growSeconds": 75, "yield": 3, "xp": 5, "color": "#FFD23F" },
+  { "id": "strawberry", "ingredient": "strawberry", "seedPrice": 6, "growSeconds": 120, "yield": 4, "xp": 7, "color": "#F2385A" },
+  { "id": "cucumber", "ingredient": "cucumber", "seedPrice": 3, "growSeconds": 55, "yield": 3, "xp": 4, "color": "#4CAF50" },
+  { "id": "green_onion", "ingredient": "green_onion", "seedPrice": 2, "growSeconds": 35, "yield": 3, "xp": 3, "color": "#5DBB4A" },
+  { "id": "lettuce", "ingredient": "lettuce", "seedPrice": 2, "growSeconds": 40, "yield": 3, "xp": 3, "color": "#8BD45A" },
+  { "id": "bok_choy", "ingredient": "bok_choy", "seedPrice": 3, "growSeconds": 50, "yield": 3, "xp": 4, "color": "#6CC24A" },
+  { "id": "blueberry", "ingredient": "blueberry", "seedPrice": 6, "growSeconds": 110, "yield": 4, "xp": 7, "color": "#4B5BD7" }
+]

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="HappyCooking.Theme" parent="@style/Theme.AppCompat.NoActionBar">
+    <item name="android:windowBackground">@color/lagoon</item>
+    <item name="android:windowFullscreen">true</item>
+  </style>
+  <color name="lagoon">#2EC4D6</color>
+</resources>

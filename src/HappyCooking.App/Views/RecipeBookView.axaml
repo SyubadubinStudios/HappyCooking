@@ -1,0 +1,109 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:HappyCooking.App.ViewModels"
+             xmlns:c="using:HappyCooking.App.Controls"
+             xmlns:svc="using:HappyCooking.App.Services"
+             x:Class="HappyCooking.App.Views.RecipeBookView"
+             x:DataType="vm:RecipeBookViewModel">
+  <DockPanel Margin="{StaticResource PageMargin}">
+    <!-- Island tabs -->
+    <Grid DockPanel.Dock="Top" ColumnDefinitions="*,Auto" Margin="0,0,0,12">
+      <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <ItemsControl ItemsSource="{Binding Tabs}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate><StackPanel Orientation="Horizontal" Spacing="8" /></ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="vm:RegionTab">
+              <Button Classes="small" Classes.butter="{Binding IsSelected}" Content="{Binding Name}" Margin="0,0,0,6"
+                      Command="{Binding $parent[UserControl].((vm:RecipeBookViewModel)DataContext).SelectTabCommand}" CommandParameter="{Binding}" />
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ScrollViewer>
+      <Border Grid.Column="1" Classes="pill" Margin="12,0,0,6">
+        <TextBlock Text="{Binding Progress}" FontWeight="ExtraBold" />
+      </Border>
+    </Grid>
+
+    <Grid ColumnDefinitions="340,18,*">
+      <!-- Recipe list -->
+      <Border Classes="sticker warm" Padding="8">
+        <ScrollViewer>
+          <ItemsControl ItemsSource="{Binding Recipes}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate><StackPanel Spacing="6" /></ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="vm:RecipeCard">
+                <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="8,6" CornerRadius="14"
+                        Command="{Binding $parent[UserControl].((vm:RecipeBookViewModel)DataContext).SelectCommand}" CommandParameter="{Binding}">
+                  <Grid ColumnDefinitions="Auto,*,Auto">
+                    <Ellipse Width="30" Height="30" Fill="{Binding Swatch}" Stroke="{StaticResource InkBrush}" StrokeThickness="2" />
+                    <StackPanel Grid.Column="1" Margin="8,0">
+                      <TextBlock Text="{Binding Name}" FontSize="16" />
+                      <TextBlock Text="{Binding Region}" FontFamily="{StaticResource BodyFont}" FontSize="12" FontWeight="SemiBold" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="1" VerticalAlignment="Center">
+                      <Image Source="{Binding StarIcon}" Width="15" Opacity="{Binding Star1}" />
+                      <Image Source="{Binding StarIcon}" Width="15" Opacity="{Binding Star2}" />
+                      <Image Source="{Binding StarIcon}" Width="15" Opacity="{Binding Star3}" />
+                    </StackPanel>
+                  </Grid>
+                </Button>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </Border>
+
+      <!-- Detail: turntable + story -->
+      <Border Grid.Column="2" Classes="sticker" Padding="0" ClipToBounds="True">
+        <Grid ColumnDefinitions="*,1.1*">
+          <c:StageHost Stage="{Binding Stage}" />
+          <ScrollViewer Grid.Column="1">
+            <StackPanel Margin="18" Spacing="10">
+              <TextBlock Text="{Binding DetailName}" Classes="title" TextWrapping="Wrap" />
+              <TextBlock Text="{Binding DetailRegion}" FontWeight="ExtraBold" Foreground="{StaticResource InkSoftBrush}" />
+              <TextBlock Text="{Binding DetailDescription}" TextWrapping="Wrap" />
+              <Border Classes="chip" CornerRadius="16" Padding="12,8" Background="{StaticResource PaperWarmBrush}">
+                <StackPanel Spacing="3">
+                  <TextBlock Text="{svc:Tr book.funFact}" Classes="heading" FontSize="16" />
+                  <TextBlock Text="{Binding DetailFact}" TextWrapping="Wrap" />
+                </StackPanel>
+              </Border>
+              <TextBlock Text="{svc:Tr kitchen.ingredients}" Classes="heading" FontSize="17" />
+              <ItemsControl ItemsSource="{Binding Ingredients}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate><WrapPanel ItemSpacing="6" LineSpacing="6" /></ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="vm:IngredientChip">
+                    <Border CornerRadius="12" BorderThickness="2" BorderBrush="{StaticResource InkBrush}" Padding="4,2,8,2" Background="White">
+                      <StackPanel Orientation="Horizontal" Spacing="5">
+                        <Ellipse Width="14" Height="14" Fill="{Binding Swatch}" />
+                        <TextBlock Text="{Binding Name}" FontSize="13" FontWeight="Bold" />
+                      </StackPanel>
+                    </Border>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+              <TextBlock Text="{svc:Tr book.steps}" Classes="heading" FontSize="17" />
+              <ItemsControl ItemsSource="{Binding Steps}">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="x:String">
+                    <TextBlock Text="{Binding}" FontWeight="SemiBold" Margin="0,2" />
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+              <TextBlock Text="{Binding DetailCooked}" Classes="small" />
+              <TextBlock Text="{Binding DetailRewards}" Classes="small" />
+              <Button Classes="primary" HorizontalAlignment="Left" Content="{svc:Tr common.cook}" Command="{Binding CookCommand}"
+                      IsEnabled="{Binding !Selected.IsLocked}" />
+            </StackPanel>
+          </ScrollViewer>
+        </Grid>
+      </Border>
+    </Grid>
+  </DockPanel>
+</UserControl>

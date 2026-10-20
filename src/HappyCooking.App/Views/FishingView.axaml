@@ -1,0 +1,71 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:HappyCooking.App.ViewModels"
+             xmlns:c="using:HappyCooking.App.Controls"
+             xmlns:svc="using:HappyCooking.App.Services"
+             x:Class="HappyCooking.App.Views.FishingView"
+             x:DataType="vm:FishingViewModel">
+  <Grid>
+    <c:StageHost Stage="{Binding Stage}" />
+
+    <Grid Margin="{StaticResource PageMargin}" ColumnDefinitions="300,*,300">
+      <!-- Where to fish and what lives there -->
+      <Border Classes="sticker" VerticalAlignment="Top" Padding="12">
+        <StackPanel Spacing="10">
+          <Grid ColumnDefinitions="*,Auto">
+            <TextBlock Text="{svc:Tr fishing.title}" Classes="heading" />
+            <TextBlock Grid.Column="1" Text="{Binding ClockText}" FontWeight="Bold" VerticalAlignment="Center" FontSize="13" />
+          </Grid>
+          <ItemsControl ItemsSource="{Binding Spots}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate><WrapPanel ItemSpacing="6" LineSpacing="6" /></ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="vm:SpotChip">
+                <Button Classes="small" Classes.butter="{Binding IsSelected}" Content="{Binding Name}" FontSize="13"
+                        Command="{Binding $parent[UserControl].((vm:FishingViewModel)DataContext).SelectSpotCommand}" CommandParameter="{Binding}" />
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+          <TextBlock Text="{svc:Tr fishing.log}" Classes="heading" FontSize="18" />
+          <ItemsControl ItemsSource="{Binding Log}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate><StackPanel Spacing="6" /></ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="vm:FishLogEntry">
+                <Grid ColumnDefinitions="Auto,*,Auto">
+                  <Ellipse Width="26" Height="18" Fill="{Binding Swatch}" Stroke="{StaticResource InkBrush}" StrokeThickness="2" />
+                  <StackPanel Grid.Column="1" Margin="8,0">
+                    <TextBlock Text="{Binding Name}" FontWeight="ExtraBold" />
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                      <Border Classes="chip" Background="{Binding RarityBrush}" Padding="6,0">
+                        <TextBlock Text="{Binding Rarity}" Classes="onDark" FontSize="11" FontWeight="Bold" />
+                      </Border>
+                      <TextBlock Text="{svc:Tr fishing.nightOnly}" IsVisible="{Binding NightOnly}" Classes="small" />
+                    </StackPanel>
+                  </StackPanel>
+                  <TextBlock Grid.Column="2" Text="{Binding Caught}" FontWeight="ExtraBold" VerticalAlignment="Center" />
+                </Grid>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Border>
+
+      <!-- The one button -->
+      <StackPanel Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Spacing="12" Margin="0,0,0,10">
+        <Border Classes="sticker" Padding="16,8" HorizontalAlignment="Center">
+          <StackPanel Spacing="6">
+            <TextBlock Text="{Binding Status}" Classes="heading" TextAlignment="Center" />
+            <ProgressBar IsVisible="{Binding IsBite}" Value="{Binding Timer}" Maximum="100" Width="260" Classes="tomato" />
+            <ProgressBar IsVisible="{Binding IsReeling}" Value="{Binding Reel}" Maximum="100" Width="260" />
+            <TextBlock Text="{Binding LastCatch}" IsVisible="{Binding LastCatch, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" MaxWidth="360" />
+          </StackPanel>
+        </Border>
+        <Button Classes="primary" Classes.go="{Binding IsBite}" Content="{Binding ButtonLabel}" Command="{Binding TapCommand}"
+                HorizontalAlignment="Center" FontSize="32" Padding="64,14" CornerRadius="26" />
+      </StackPanel>
+    </Grid>
+  </Grid>
+</UserControl>

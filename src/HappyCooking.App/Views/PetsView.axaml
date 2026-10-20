@@ -1,0 +1,72 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:HappyCooking.App.ViewModels"
+             xmlns:svc="using:HappyCooking.App.Services"
+             x:Class="HappyCooking.App.Views.PetsView"
+             x:DataType="vm:PetsViewModel">
+  <DockPanel Margin="{StaticResource PageMargin}">
+    <StackPanel DockPanel.Dock="Top" Spacing="2" Margin="6,0,0,10">
+      <TextBlock Text="{svc:Tr pets.title}" Classes="display onDark" />
+      <TextBlock Text="{svc:Tr pets.subtitle}" Classes="onDark" FontWeight="Bold" />
+    </StackPanel>
+    <ScrollViewer>
+      <ItemsControl ItemsSource="{Binding Pets}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate><WrapPanel ItemSpacing="16" LineSpacing="16" HorizontalAlignment="Center" /></ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate x:DataType="vm:PetCard">
+            <Border Classes="sticker" Width="300" Padding="0" ClipToBounds="True" Classes.active="{Binding Active}">
+              <Border.Styles>
+                <Style Selector="Border.active"><Setter Property="BorderBrush" Value="{StaticResource TomatoBrush}" /><Setter Property="BorderThickness" Value="5" /></Style>
+              </Border.Styles>
+              <StackPanel>
+                <Grid Height="170" Background="{Binding Backdrop}">
+                  <Image Source="{Binding Image}" Margin="8" Opacity="1" />
+                  <Border IsVisible="{Binding Locked}" Background="#99FFFFFF">
+                    <TextBlock Text="{Binding LockText}" Classes="heading" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                  </Border>
+                  <Border IsVisible="{Binding Active}" Classes="chip" Background="{StaticResource TomatoBrush}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
+                    <TextBlock Text="{svc:Tr pets.withYou}" Classes="onDark" FontWeight="ExtraBold" FontSize="12" />
+                  </Border>
+                </Grid>
+                <StackPanel Margin="14,10,14,14" Spacing="6">
+                  <TextBlock Text="{Binding Name}" Classes="heading" FontSize="20" />
+                  <TextBlock Text="{Binding Description}" TextWrapping="Wrap" FontSize="14" Height="40" />
+                  <Border Classes="chip" Background="{StaticResource PaperWarmBrush}" HorizontalAlignment="Left">
+                    <TextBlock Text="{Binding Bonus}" FontWeight="ExtraBold" FontSize="13" />
+                  </Border>
+                  <StackPanel IsVisible="{Binding ShowCare}" Spacing="6">
+                    <Grid ColumnDefinitions="*,Auto">
+                      <ProgressBar Value="{Binding Happiness}" Maximum="100" Classes="butter" VerticalAlignment="Center" />
+                      <TextBlock Grid.Column="1" Text="{Binding Mood}" Margin="8,0,0,0" FontWeight="Bold" FontSize="13" />
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                      <Button Classes="small go" Command="{Binding $parent[UserControl].((vm:PetsViewModel)DataContext).FeedCommand}" CommandParameter="{Binding}">
+                        <StackPanel Orientation="Horizontal" Spacing="4">
+                          <TextBlock Text="{svc:Tr pets.feed}" FontFamily="{StaticResource DisplayFont}" FontSize="15" />
+                          <Image Source="{Binding $parent[UserControl].((vm:PetsViewModel)DataContext).CoinIcon}" Width="16" />
+                          <TextBlock Text="{Binding $parent[UserControl].((vm:PetsViewModel)DataContext).FeedCost}" FontFamily="{StaticResource DisplayFont}" FontSize="15" />
+                        </StackPanel>
+                      </Button>
+                      <Button Classes="small" IsVisible="{Binding !Active}" Content="{svc:Tr pets.bringAlong}"
+                              Command="{Binding $parent[UserControl].((vm:PetsViewModel)DataContext).SetActiveCommand}" CommandParameter="{Binding}" />
+                    </StackPanel>
+                  </StackPanel>
+                  <Button IsVisible="{Binding ShowAdopt}" Classes="butter" IsEnabled="{Binding CanAdopt}" HorizontalAlignment="Left"
+                          Command="{Binding $parent[UserControl].((vm:PetsViewModel)DataContext).AdoptCommand}" CommandParameter="{Binding}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                      <TextBlock Text="{svc:Tr pets.adopt}" FontFamily="{StaticResource DisplayFont}" FontSize="17" />
+                      <Image Source="{Binding PriceIcon}" Width="22" />
+                      <TextBlock Text="{Binding Price}" FontFamily="{StaticResource DisplayFont}" FontSize="17" />
+                    </StackPanel>
+                  </Button>
+                </StackPanel>
+              </StackPanel>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

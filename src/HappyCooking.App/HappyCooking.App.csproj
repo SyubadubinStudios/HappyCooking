@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Shared game UI: Avalonia views, view models and the ThreeNet 3D stages.
+    Platform heads (Desktop, Android, iOS) are thin launchers around this library.
+  -->
+  <PropertyGroup>
+    <RootNamespace>HappyCooking.App</RootNamespace>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="ThreeNet" />
+    <PackageReference Include="ThreeNet.Avalonia" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HappyCooking.Core\HappyCooking.Core.csproj" />
+    <ProjectReference Include="..\HappyCooking.Data\HappyCooking.Data.csproj" />
+  </ItemGroup>
+</Project>

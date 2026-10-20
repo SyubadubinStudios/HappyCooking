@@ -1,0 +1,119 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:HappyCooking.App.ViewModels"
+             xmlns:v="using:HappyCooking.App.Views"
+             xmlns:svc="using:HappyCooking.App.Services"
+             x:Class="HappyCooking.App.Views.ShellView"
+             x:DataType="vm:ShellViewModel"
+             Background="{StaticResource LagoonGradient}">
+
+  <UserControl.DataTemplates>
+    <DataTemplate DataType="vm:TitleViewModel"><v:TitleView /></DataTemplate>
+    <DataTemplate DataType="vm:MapViewModel"><v:MapView /></DataTemplate>
+    <DataTemplate DataType="vm:KitchenViewModel"><v:KitchenView /></DataTemplate>
+    <DataTemplate DataType="vm:RestaurantViewModel"><v:RestaurantView /></DataTemplate>
+    <DataTemplate DataType="vm:FarmViewModel"><v:FarmView /></DataTemplate>
+    <DataTemplate DataType="vm:FishingViewModel"><v:FishingView /></DataTemplate>
+    <DataTemplate DataType="vm:PetsViewModel"><v:PetsView /></DataTemplate>
+    <DataTemplate DataType="vm:RecipeBookViewModel"><v:RecipeBookView /></DataTemplate>
+    <DataTemplate DataType="vm:TrophiesViewModel"><v:TrophiesView /></DataTemplate>
+    <DataTemplate DataType="vm:FriendsViewModel"><v:FriendsView /></DataTemplate>
+    <DataTemplate DataType="vm:SettingsViewModel"><v:SettingsView /></DataTemplate>
+  </UserControl.DataTemplates>
+
+  <Grid>
+    <!-- The current screen fills the window; HUD and dock float above it. -->
+    <ContentControl Content="{Binding CurrentPage}" />
+
+    <!-- HUD -->
+    <Grid IsVisible="{Binding ShowChrome}" VerticalAlignment="Top" Margin="16,14,16,0"
+          ColumnDefinitions="Auto,*,Auto">
+      <Border Classes="pill" Padding="6,4,18,4">
+        <StackPanel Orientation="Horizontal" Spacing="10">
+          <Grid Width="48" Height="48">
+            <Ellipse Fill="{StaticResource ButterBrush}" Stroke="{StaticResource InkBrush}" StrokeThickness="3" />
+            <TextBlock Text="{Binding Level}" Classes="heading" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Grid>
+          <StackPanel VerticalAlignment="Center" Spacing="3">
+            <TextBlock Text="{Binding PlayerName}" Classes="heading" FontSize="19" />
+            <ProgressBar Value="{Binding LevelProgress}" Maximum="100" Width="132" Height="10" MinHeight="10" Classes="butter" />
+          </StackPanel>
+          <Border Width="44" Height="44" CornerRadius="22" ClipToBounds="True" IsVisible="{Binding PetImage, Converter={x:Static ObjectConverters.IsNotNull}}"
+                  Background="{StaticResource PaperWarmBrush}" BorderBrush="{StaticResource InkBrush}" BorderThickness="2">
+            <Image Source="{Binding PetImage}" Stretch="UniformToFill" />
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+        <Border Classes="pill" IsVisible="{Binding EventName, Converter={x:Static ObjectConverters.IsNotNull}}"
+                Background="{Binding EventBrush}" ToolTip.Tip="{Binding EventText}">
+          <TextBlock Text="{Binding EventName}" Classes="strong onDark" FontSize="14" VerticalAlignment="Center" MaxWidth="220" TextTrimming="CharacterEllipsis" />
+        </Border>
+        <Border Classes="pill">
+          <StackPanel Orientation="Horizontal" Spacing="6">
+            <Image Source="{Binding CoinIcon}" Width="30" Height="30" />
+            <TextBlock Text="{Binding Coins}" Classes="heading" FontSize="20" VerticalAlignment="Center" MinWidth="44" />
+          </StackPanel>
+        </Border>
+        <Border Classes="pill">
+          <StackPanel Orientation="Horizontal" Spacing="6">
+            <Image Source="{Binding GemIcon}" Width="30" Height="30" />
+            <TextBlock Text="{Binding Gems}" Classes="heading" FontSize="20" VerticalAlignment="Center" MinWidth="24" />
+          </StackPanel>
+        </Border>
+        <Button Classes="small butter" Content="{Binding LanguageLabel}" Command="{Binding ToggleLanguageCommand}"
+                ToolTip.Tip="{svc:Tr settings.language}" MinWidth="52" />
+      </StackPanel>
+    </Grid>
+
+    <!-- Dock -->
+    <Border IsVisible="{Binding ShowChrome}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="12,0,12,12"
+            Background="#E6FFFFFF" BorderBrush="{StaticResource InkBrush}" BorderThickness="3" CornerRadius="30"
+            BoxShadow="0 6 0 0 #2B2A6B" Padding="10,8">
+      <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <ItemsControl ItemsSource="{Binding Dock}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate><StackPanel Orientation="Horizontal" Spacing="6" /></ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="vm:DockItem">
+              <Button Classes="dock" Classes.active="{Binding IsActive}"
+                      Command="{Binding $parent[UserControl].((vm:ShellViewModel)DataContext).NavigateCommand}"
+                      CommandParameter="{Binding Key}" ToolTip.Tip="{Binding Label}">
+                <StackPanel Spacing="4" Width="74">
+                  <Border Classes="dockIcon" HorizontalAlignment="Center">
+                    <Image Source="{Binding Icon}" />
+                  </Border>
+                  <TextBlock Text="{Binding Label}" FontFamily="{StaticResource DisplayFont}" FontSize="13"
+                             HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" />
+                </StackPanel>
+              </Button>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ScrollViewer>
+    </Border>
+
+    <!-- Toasts -->
+    <ItemsControl ItemsSource="{Binding Toasts}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,86,0,0"
+                  IsHitTestVisible="False">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate><StackPanel Spacing="10" /></ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+      <ItemsControl.ItemTemplate>
+        <DataTemplate x:DataType="vm:ToastViewModel">
+          <Border Classes="sticker warm" Padding="12,8,20,8" MinWidth="300">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Image Source="{Binding Icon}" Width="46" Height="46" />
+              <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="{Binding Title}" Classes="heading" FontSize="19" />
+                <TextBlock Text="{Binding Message}" FontWeight="Bold" />
+              </StackPanel>
+            </StackPanel>
+          </Border>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </Grid>
+</UserControl>

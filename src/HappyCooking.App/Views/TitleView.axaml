@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:HappyCooking.App.ViewModels"
+             xmlns:c="using:HappyCooking.App.Controls"
+             xmlns:svc="using:HappyCooking.App.Services"
+             x:Class="HappyCooking.App.Views.TitleView"
+             x:DataType="vm:TitleViewModel">
+  <Grid>
+    <c:StageHost Stage="{Binding Stage}" />
+
+    <!-- Logo sits over the stage like a sign on the cake stand -->
+    <Image Source="{Binding Logo}" VerticalAlignment="Top" HorizontalAlignment="Center"
+           MaxWidth="600" Margin="0,18,0,0" />
+
+    <Button Classes="small butter" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="18"
+            Content="{Binding Shell.LanguageLabel}" Command="{Binding Shell.ToggleLanguageCommand}" MinWidth="56" />
+
+    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,56" Spacing="16">
+      <Border Classes="sticker" Padding="22,14" HorizontalAlignment="Center">
+        <StackPanel Spacing="10" Width="420">
+          <TextBlock Text="{Binding Welcome}" Classes="heading" TextAlignment="Center" TextWrapping="Wrap" />
+          <TextBox IsVisible="{Binding AskName}" Text="{Binding PlayerName}" Watermark="{svc:Tr title.namePrompt}"
+                   MaxLength="16" HorizontalContentAlignment="Center" FontSize="20" />
+        </StackPanel>
+      </Border>
+      <Button Classes="primary" HorizontalAlignment="Center" Command="{Binding PlayCommand}"
+              Content="{svc:Tr title.play}" FontSize="32" Padding="64,14" CornerRadius="24" IsDefault="True" />
+    </StackPanel>
+
+    <Border VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,14" Classes="chip" Background="#CCFFFFFF">
+      <TextBlock Text="{svc:Tr about.credit}" FontSize="13" FontWeight="Bold" />
+    </Border>
+  </Grid>
+</UserControl>

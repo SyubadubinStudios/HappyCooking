@@ -1,0 +1,213 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Base text -->
+  <Style Selector="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource BodyFont}" />
+    <Setter Property="Foreground" Value="{StaticResource InkBrush}" />
+    <Setter Property="FontSize" Value="{StaticResource TextBody}" />
+    <!-- Nunito is a variable font; SemiBold keeps body text sturdy and readable for young eyes. -->
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+  <Style Selector="TextBlock.display">
+    <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
+    <Setter Property="FontSize" Value="{StaticResource TextDisplay}" />
+    <Setter Property="LineHeight" Value="46" />
+  </Style>
+  <Style Selector="TextBlock.title">
+    <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
+    <Setter Property="FontSize" Value="{StaticResource TextTitle}" />
+  </Style>
+  <Style Selector="TextBlock.heading">
+    <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
+    <Setter Property="FontSize" Value="{StaticResource TextHeading}" />
+  </Style>
+  <Style Selector="TextBlock.small">
+    <Setter Property="FontSize" Value="{StaticResource TextSmall}" />
+    <Setter Property="Foreground" Value="{StaticResource InkSoftBrush}" />
+  </Style>
+  <Style Selector="TextBlock.strong">
+    <Setter Property="FontWeight" Value="ExtraBold" />
+  </Style>
+  <Style Selector="TextBlock.onDark">
+    <Setter Property="Foreground" Value="White" />
+  </Style>
+
+  <!-- Sticker card: white, thick ink outline, hard offset shadow -->
+  <Style Selector="Border.sticker">
+    <Setter Property="Background" Value="{StaticResource PaperBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource InkBrush}" />
+    <Setter Property="BorderThickness" Value="{StaticResource StickerOutline}" />
+    <Setter Property="CornerRadius" Value="{StaticResource StickerRadius}" />
+    <Setter Property="BoxShadow" Value="{StaticResource StickerShadow}" />
+    <Setter Property="Padding" Value="16" />
+  </Style>
+  <Style Selector="Border.sticker.warm">
+    <Setter Property="Background" Value="{StaticResource PaperWarmBrush}" />
+  </Style>
+  <Style Selector="Border.pill">
+    <Setter Property="Background" Value="{StaticResource PaperBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource InkBrush}" />
+    <Setter Property="BorderThickness" Value="{StaticResource StickerOutline}" />
+    <Setter Property="CornerRadius" Value="{StaticResource PillRadius}" />
+    <Setter Property="BoxShadow" Value="0 4 0 0 #2B2A6B" />
+    <Setter Property="Padding" Value="10,4,14,4" />
+  </Style>
+  <Style Selector="Border.chip">
+    <Setter Property="CornerRadius" Value="{StaticResource PillRadius}" />
+    <Setter Property="Padding" Value="10,3" />
+    <Setter Property="Background" Value="{StaticResource PaperWarmBrush}" />
+  </Style>
+
+  <!-- Buttons: sticker by default; they sink into their shadow when pressed -->
+  <Style Selector="Button">
+    <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
+    <Setter Property="FontSize" Value="18" />
+    <Setter Property="Foreground" Value="{StaticResource InkBrush}" />
+    <Setter Property="Background" Value="{StaticResource PaperBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource InkBrush}" />
+    <Setter Property="BorderThickness" Value="{StaticResource StickerOutline}" />
+    <Setter Property="CornerRadius" Value="16" />
+    <Setter Property="Padding" Value="18,8" />
+    <Setter Property="MinHeight" Value="44" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Cursor" Value="Hand" />
+    <Setter Property="RenderTransform" Value="none" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.08" />
+      </Transitions>
+    </Setter>
+  </Style>
+  <Style Selector="Button /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="BoxShadow" Value="0 5 0 0 #2B2A6B" />
+  </Style>
+  <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{StaticResource PaperWarmBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource InkBrush}" />
+    <Setter Property="Foreground" Value="{StaticResource InkBrush}" />
+  </Style>
+  <Style Selector="Button:pressed">
+    <Setter Property="RenderTransform" Value="translateY(4px)" />
+  </Style>
+  <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="BoxShadow" Value="0 1 0 0 #2B2A6B" />
+  </Style>
+  <Style Selector="Button:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="#E9E8F3" />
+    <Setter Property="BorderBrush" Value="#A9A8C8" />
+    <Setter Property="Foreground" Value="#8A89AE" />
+    <Setter Property="BoxShadow" Value="0 3 0 0 #A9A8C8" />
+  </Style>
+  <Style Selector="Button:focus-visible /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="BorderBrush" Value="{StaticResource TomatoBrush}" />
+  </Style>
+
+  <Style Selector="Button.primary">
+    <Setter Property="Background" Value="{StaticResource TomatoBrush}" />
+    <Setter Property="Foreground" Value="White" />
+    <Setter Property="FontSize" Value="22" />
+    <Setter Property="Padding" Value="28,10" />
+  </Style>
+  <Style Selector="Button.primary:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{StaticResource TomatoDeepBrush}" />
+    <Setter Property="Foreground" Value="White" />
+  </Style>
+  <Style Selector="Button.go">
+    <Setter Property="Background" Value="{StaticResource MintBrush}" />
+  </Style>
+  <Style Selector="Button.go:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="#4BC294" />
+  </Style>
+  <Style Selector="Button.butter">
+    <Setter Property="Background" Value="{StaticResource ButterBrush}" />
+  </Style>
+  <Style Selector="Button.butter:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="#FFC93C" />
+  </Style>
+  <Style Selector="Button.small">
+    <Setter Property="FontSize" Value="15" />
+    <Setter Property="MinHeight" Value="34" />
+    <Setter Property="Padding" Value="12,4" />
+    <Setter Property="CornerRadius" Value="12" />
+  </Style>
+  <Style Selector="Button.ghost">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+  </Style>
+  <Style Selector="Button.ghost /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="BoxShadow" Value="none" />
+  </Style>
+
+  <!-- Dock buttons: round stickers with an icon and a label underneath -->
+  <Style Selector="Button.dock">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Padding" Value="2" />
+    <Setter Property="MinHeight" Value="0" />
+  </Style>
+  <Style Selector="Button.dock /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="BoxShadow" Value="none" />
+  </Style>
+  <Style Selector="Button.dock:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+  <Style Selector="Button.dock Border.dockIcon">
+    <Setter Property="Width" Value="64" />
+    <Setter Property="Height" Value="64" />
+    <Setter Property="CornerRadius" Value="32" />
+    <Setter Property="Background" Value="{StaticResource PaperBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource InkBrush}" />
+    <Setter Property="BorderThickness" Value="3" />
+    <Setter Property="BoxShadow" Value="0 5 0 0 #2B2A6B" />
+    <Setter Property="Padding" Value="6" />
+  </Style>
+  <Style Selector="Button.dock:pointerover Border.dockIcon">
+    <Setter Property="Background" Value="{StaticResource PaperWarmBrush}" />
+  </Style>
+  <Style Selector="Button.dock.active Border.dockIcon">
+    <Setter Property="Background" Value="{StaticResource ButterBrush}" />
+  </Style>
+
+  <!-- Progress bars as chunky candy sticks -->
+  <Style Selector="ProgressBar">
+    <Setter Property="Height" Value="14" />
+    <Setter Property="MinHeight" Value="14" />
+    <Setter Property="MinWidth" Value="0" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="Background" Value="#E6E5F2" />
+    <Setter Property="Foreground" Value="{StaticResource MintBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource InkBrush}" />
+    <Setter Property="BorderThickness" Value="2" />
+  </Style>
+  <Style Selector="ProgressBar.butter">
+    <Setter Property="Foreground" Value="{StaticResource ButterBrush}" />
+  </Style>
+  <Style Selector="ProgressBar.tomato">
+    <Setter Property="Foreground" Value="{StaticResource TomatoBrush}" />
+  </Style>
+
+  <Style Selector="TextBox">
+    <Setter Property="FontFamily" Value="{StaticResource BodyFont}" />
+    <Setter Property="FontSize" Value="17" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="BorderThickness" Value="3" />
+    <Setter Property="BorderBrush" Value="{StaticResource InkBrush}" />
+    <Setter Property="Background" Value="White" />
+    <Setter Property="Foreground" Value="{StaticResource InkBrush}" />
+    <Setter Property="Padding" Value="10,8" />
+  </Style>
+  <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+    <Setter Property="BorderBrush" Value="{StaticResource TomatoBrush}" />
+    <Setter Property="BorderThickness" Value="3" />
+  </Style>
+
+  <Style Selector="Slider">
+    <Setter Property="Foreground" Value="{StaticResource TomatoBrush}" />
+  </Style>
+  <Style Selector="ScrollViewer">
+    <Setter Property="AllowAutoHide" Value="True" />
+  </Style>
+</Styles>

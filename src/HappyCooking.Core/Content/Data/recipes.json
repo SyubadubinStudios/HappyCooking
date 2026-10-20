@@ -1,0 +1,430 @@
+[
+  {
+    "id": "rendang", "region": "nusantara", "difficulty": 3, "unlockLevel": 1, "coins": 40, "xp": 30, "color": "#7A3B1E", "model": "rendang", "creative": false,
+    "name": { "en": "Rendang", "id": "Rendang" },
+    "description": { "en": "Beef slow-cooked in coconut milk and spices until dark, rich and tender.", "id": "Daging sapi dimasak perlahan dengan santan dan rempah sampai gelap, kaya rasa, dan empuk." },
+    "funFact": { "en": "Rendang comes from the Minangkabau people of West Sumatra. Cooks stir it for hours until the coconut milk is completely absorbed.", "id": "Rendang berasal dari masyarakat Minangkabau, Sumatra Barat. Juru masak mengaduknya berjam-jam sampai santannya meresap habis." },
+    "ingredients": [ "beef", "coconut_milk", "chili", "lemongrass", "galangal", "shallot" ],
+    "steps": [
+      { "kind": "Pick", "verb": "pick", "items": [ "beef", "coconut_milk", "chili", "lemongrass" ] },
+      { "kind": "Tap", "verb": "grind", "item": "chili", "count": 12 },
+      { "kind": "Tap", "verb": "chop", "item": "beef", "count": 10 },
+      { "kind": "Rhythm", "verb": "stir", "item": "coconut_milk", "count": 4, "zone": 0.2, "speed": 0.7 },
+      { "kind": "Heat", "verb": "simmer", "target": 0.78, "zone": 0.12, "speed": 0.28 }
+    ]
+  },
+  {
+    "id": "pempek", "region": "nusantara", "difficulty": 2, "unlockLevel": 1, "coins": 30, "xp": 22, "color": "#E9C98A", "model": null, "creative": false,
+    "name": { "en": "Pempek", "id": "Pempek" },
+    "description": { "en": "Chewy fish cakes with a sweet, sour and spicy dark sauce.", "id": "Kue ikan kenyal dengan kuah cuko yang manis, asam, dan pedas." },
+    "funFact": { "en": "Pempek is the pride of Palembang. It is made from fish and sago, and served with a sauce called cuko.", "id": "Pempek adalah kebanggaan Palembang. Dibuat dari ikan dan sagu, lalu disajikan dengan kuah cuko." },
+    "ingredients": [ "mackerel", "sago", "garlic", "palm_sugar" ],
+    "steps": [
+      { "kind": "Tap", "verb": "mash", "item": "mackerel", "count": 10 },
+      { "kind": "Tap", "verb": "knead", "item": "sago", "count": 12 },
+      { "kind": "Heat", "verb": "fry", "target": 0.62, "zone": 0.15, "speed": 0.38 },
+      { "kind": "Pour", "verb": "sauce", "item": "palm_sugar", "target": 0.6, "zone": 0.16 }
+    ]
+  },
+  {
+    "id": "sate", "region": "nusantara", "difficulty": 1, "unlockLevel": 1, "coins": 24, "xp": 18, "color": "#9C5528", "model": null, "creative": false,
+    "name": { "en": "Satay", "id": "Sate" },
+    "description": { "en": "Grilled chicken skewers with creamy peanut sauce.", "id": "Tusukan ayam bakar dengan saus kacang yang gurih." },
+    "funFact": { "en": "Indonesia has dozens of kinds of satay. Sate Madura uses peanut sauce, while Sate Padang uses a yellow, spicy gravy.", "id": "Indonesia punya puluhan jenis sate. Sate Madura memakai saus kacang, sedangkan Sate Padang memakai kuah kuning yang pedas." },
+    "ingredients": [ "chicken", "peanut", "sweet_soy", "shallot" ],
+    "steps": [
+      { "kind": "Tap", "verb": "slice", "item": "chicken", "count": 8 },
+      { "kind": "Decorate", "verb": "skewer", "item": "chicken", "count": 4 },
+      { "kind": "Heat", "verb": "grill", "target": 0.66, "zone": 0.17, "speed": 0.36 },
+      { "kind": "Pour", "verb": "sauce", "item": "peanut", "target": 0.55, "zone": 0.18 }
+    ]
+  },
+  {
+    "id": "gudeg", "region": "nusantara", "difficulty": 2, "unlockLevel": 2, "coins": 32, "xp": 24, "color": "#8C4A26", "model": null, "creative": false,
+    "name": { "en": "Gudeg", "id": "Gudeg" },
+    "description": { "en": "Sweet young jackfruit stew cooked with palm sugar and coconut milk.", "id": "Nangka muda manis yang dimasak dengan gula merah dan santan." },
+    "funFact": { "en": "Yogyakarta is nicknamed the City of Gudeg. Teak leaves are often added to give gudeg its reddish-brown colour.", "id": "Yogyakarta dijuluki Kota Gudeg. Daun jati sering ditambahkan untuk memberi warna cokelat kemerahan." },
+    "ingredients": [ "jackfruit", "palm_sugar", "coconut_milk", "egg" ],
+    "steps": [
+      { "kind": "Tap", "verb": "chop", "item": "jackfruit", "count": 10 },
+      { "kind": "Pour", "verb": "pour", "item": "coconut_milk", "target": 0.7, "zone": 0.16 },
+      { "kind": "Pour", "verb": "season", "item": "palm_sugar", "target": 0.5, "zone": 0.16 },
+      { "kind": "Heat", "verb": "simmer", "target": 0.75, "zone": 0.14, "speed": 0.3 }
+    ]
+  },
+  {
+    "id": "rawon", "region": "nusantara", "difficulty": 2, "unlockLevel": 2, "coins": 32, "xp": 24, "color": "#2E211B", "model": null, "creative": false,
+    "name": { "en": "Rawon", "id": "Rawon" },
+    "description": { "en": "A black beef soup from East Java, served with bean sprouts and rice.", "id": "Sup daging hitam dari Jawa Timur, disajikan dengan tauge dan nasi." },
+    "funFact": { "en": "Rawon gets its dark colour from kluwek, a nut that is poisonous when raw but becomes safe and tasty after fermenting.", "id": "Warna gelap rawon berasal dari kluwek, biji yang beracun saat mentah tetapi aman dan lezat setelah difermentasi." },
+    "ingredients": [ "beef", "kluwek", "bean_sprouts", "rice", "garlic" ],
+    "steps": [
+      { "kind": "Pick", "verb": "pick", "items": [ "beef", "kluwek", "bean_sprouts" ] },
+      { "kind": "Tap", "verb": "grind", "item": "kluwek", "count": 10 },
+      { "kind": "Heat", "verb": "boil", "target": 0.7, "zone": 0.15, "speed": 0.33 },
+      { "kind": "Decorate", "verb": "garnish", "item": "bean_sprouts", "count": 3 }
+    ]
+  },
+  {
+    "id": "soto", "region": "nusantara", "difficulty": 1, "unlockLevel": 1, "coins": 26, "xp": 18, "color": "#F2C230", "model": null, "creative": false,
+    "name": { "en": "Soto Ayam", "id": "Soto Ayam" },
+    "description": { "en": "Golden turmeric chicken soup with noodles and lime.", "id": "Sup ayam kuning kunyit dengan mi dan jeruk nipis." },
+    "funFact": { "en": "Almost every Indonesian city has its own soto: Soto Betawi with milk, Soto Lamongan with crunchy koya powder, and many more.", "id": "Hampir setiap kota di Indonesia punya soto sendiri: Soto Betawi dengan susu, Soto Lamongan dengan bubuk koya, dan banyak lagi." },
+    "ingredients": [ "chicken", "turmeric", "noodles", "lime", "egg" ],
+    "steps": [
+      { "kind": "Tap", "verb": "grind", "item": "turmeric", "count": 8 },
+      { "kind": "Heat", "verb": "boil", "target": 0.6, "zone": 0.18, "speed": 0.34 },
+      { "kind": "Decorate", "verb": "garnish", "item": "lime", "count": 3 }
+    ]
+  },
+  {
+    "id": "nasi_goreng", "region": "nusantara", "difficulty": 1, "unlockLevel": 1, "coins": 22, "xp": 16, "color": "#B5652F", "model": null, "creative": false,
+    "name": { "en": "Nasi Goreng", "id": "Nasi Goreng" },
+    "description": { "en": "Smoky fried rice with sweet soy sauce, topped with a sunny fried egg.", "id": "Nasi goreng beraroma asap dengan kecap manis, diberi telur ceplok di atasnya." },
+    "funFact": { "en": "Nasi goreng was a clever way to use leftover rice so nothing was wasted. Day-old rice fries best!", "id": "Nasi goreng awalnya cara cerdas memakai nasi sisa agar tidak terbuang. Nasi kemarin justru paling enak digoreng!" },
+    "ingredients": [ "rice", "sweet_soy", "egg", "shallot", "chili" ],
+    "steps": [
+      { "kind": "Tap", "verb": "chop", "item": "shallot", "count": 8 },
+      { "kind": "Rhythm", "verb": "stir", "item": "rice", "count": 3, "zone": 0.22, "speed": 0.75 },
+      { "kind": "Pour", "verb": "season", "item": "sweet_soy", "target": 0.55, "zone": 0.18 },
+      { "kind": "Heat", "verb": "fry", "item": "egg", "target": 0.6, "zone": 0.18, "speed": 0.4 }
+    ]
+  },
+  {
+    "id": "klepon", "region": "nusantara", "difficulty": 1, "unlockLevel": 3, "coins": 20, "xp": 16, "color": "#4CAF50", "model": null, "creative": false,
+    "name": { "en": "Klepon", "id": "Klepon" },
+    "description": { "en": "Green pandan rice balls that burst with melted palm sugar.", "id": "Bola ketan hijau pandan yang meletup berisi gula merah cair." },
+    "funFact": { "en": "Bite klepon with your mouth closed! The palm sugar inside turns into hot syrup that can squirt out.", "id": "Gigit klepon dengan mulut tertutup! Gula merah di dalamnya mencair dan bisa muncrat keluar." },
+    "ingredients": [ "glutinous_rice_flour", "pandan", "palm_sugar", "grated_coconut" ],
+    "steps": [
+      { "kind": "Tap", "verb": "knead", "item": "glutinous_rice_flour", "count": 10 },
+      { "kind": "Decorate", "verb": "fill", "item": "palm_sugar", "count": 4 },
+      { "kind": "Heat", "verb": "boil", "target": 0.55, "zone": 0.18, "speed": 0.36 },
+      { "kind": "Pour", "verb": "sprinkle", "item": "grated_coconut", "target": 0.6, "zone": 0.2 }
+    ]
+  },
+
+  {
+    "id": "sushi", "region": "sakura", "difficulty": 2, "unlockLevel": 2, "coins": 34, "xp": 24, "color": "#FF8C69", "model": "sushi", "creative": false,
+    "name": { "en": "Sushi", "id": "Sushi" },
+    "description": { "en": "Vinegared rice with fresh salmon and tuna, rolled in crisp nori.", "id": "Nasi berbumbu cuka dengan salmon dan tuna segar, digulung dengan nori renyah." },
+    "funFact": { "en": "Sushi began as a way to keep fish fresh in fermented rice. Nigiri sushi was the fast food of Edo (old Tokyo) in the 1800s.", "id": "Sushi awalnya cara mengawetkan ikan dalam nasi fermentasi. Sushi nigiri adalah makanan cepat saji di Edo (Tokyo lama) pada tahun 1800-an." },
+    "ingredients": [ "rice", "salmon", "tuna", "nori", "cucumber" ],
+    "steps": [
+      { "kind": "Pick", "verb": "pick", "items": [ "rice", "salmon", "nori", "cucumber" ] },
+      { "kind": "Tap", "verb": "slice", "item": "salmon", "count": 8 },
+      { "kind": "Rhythm", "verb": "roll", "item": "nori", "count": 3, "zone": 0.2, "speed": 0.65 },
+      { "kind": "Decorate", "verb": "plate", "count": 5 }
+    ]
+  },
+  {
+    "id": "ramen", "region": "sakura", "difficulty": 2, "unlockLevel": 2, "coins": 32, "xp": 22, "color": "#E9B44C", "model": null, "creative": false,
+    "name": { "en": "Ramen", "id": "Ramen" },
+    "description": { "en": "Springy noodles in a warm broth with egg, green onion and nori.", "id": "Mi kenyal dalam kuah hangat dengan telur, daun bawang, dan nori." },
+    "funFact": { "en": "Instant ramen was invented in Japan by Momofuku Ando in 1958. Today people eat over 100 billion servings of instant noodles a year.", "id": "Ramen instan ditemukan di Jepang oleh Momofuku Ando pada 1958. Kini orang makan lebih dari 100 miliar porsi mi instan setiap tahun." },
+    "ingredients": [ "noodles", "egg", "green_onion", "soy_sauce", "nori" ],
+    "steps": [
+      { "kind": "Heat", "verb": "boil", "item": "noodles", "target": 0.58, "zone": 0.16, "speed": 0.4 },
+      { "kind": "Tap", "verb": "chop", "item": "green_onion", "count": 9 },
+      { "kind": "Pour", "verb": "pour", "item": "soy_sauce", "target": 0.5, "zone": 0.16 },
+      { "kind": "Decorate", "verb": "garnish", "item": "egg", "count": 3 }
+    ]
+  },
+  {
+    "id": "takoyaki", "region": "sakura", "difficulty": 3, "unlockLevel": 3, "coins": 38, "xp": 28, "color": "#C98A4B", "model": null, "creative": false,
+    "name": { "en": "Takoyaki", "id": "Takoyaki" },
+    "description": { "en": "Round, golden octopus balls, flipped quickly in a special pan.", "id": "Bola gurita bulat keemasan yang dibalik cepat di wajan khusus." },
+    "funFact": { "en": "Takoyaki was invented in Osaka in 1935. Cooks flip each ball with a thin pick so it becomes perfectly round.", "id": "Takoyaki diciptakan di Osaka pada 1935. Juru masak membalik setiap bola dengan tusuk tipis agar bulat sempurna." },
+    "ingredients": [ "octopus", "flour", "egg", "green_onion" ],
+    "steps": [
+      { "kind": "Tap", "verb": "whisk", "item": "flour", "count": 12 },
+      { "kind": "Tap", "verb": "chop", "item": "octopus", "count": 8 },
+      { "kind": "Rhythm", "verb": "flip", "count": 5, "zone": 0.16, "speed": 0.9 },
+      { "kind": "Heat", "verb": "fry", "target": 0.64, "zone": 0.12, "speed": 0.42 }
+    ]
+  },
+  {
+    "id": "onigiri", "region": "sakura", "difficulty": 1, "unlockLevel": 2, "coins": 18, "xp": 14, "color": "#F7F7F2", "model": null, "creative": false,
+    "name": { "en": "Onigiri", "id": "Onigiri" },
+    "description": { "en": "Triangle rice balls with a salmon filling, wrapped in nori.", "id": "Nasi kepal segitiga berisi salmon, dibungkus nori." },
+    "funFact": { "en": "Japanese families have packed onigiri for school trips and picnics for hundreds of years. Wet hands stop the rice from sticking!", "id": "Keluarga Jepang membawa onigiri untuk piknik dan karyawisata sejak ratusan tahun lalu. Tangan basah membuat nasi tidak lengket!" },
+    "ingredients": [ "rice", "salmon", "nori" ],
+    "steps": [
+      { "kind": "Heat", "verb": "steam", "item": "rice", "target": 0.6, "zone": 0.2, "speed": 0.34 },
+      { "kind": "Decorate", "verb": "fill", "item": "salmon", "count": 3 },
+      { "kind": "Tap", "verb": "shape", "item": "rice", "count": 8 }
+    ]
+  },
+  {
+    "id": "mermaid_soup", "region": "sakura", "difficulty": 2, "unlockLevel": 4, "coins": 46, "xp": 32, "color": "#3D8BFE", "model": null, "creative": true,
+    "name": { "en": "Mermaid Soup", "id": "Sup Putri Duyung" },
+    "description": { "en": "An ocean-blue coconut broth with crab, squid and shimmering seaweed.", "id": "Kuah santan biru laut dengan kepiting, cumi, dan rumput laut berkilau." },
+    "funFact": { "en": "The blue colour comes from butterfly pea flowers. Add a squeeze of lime and it magically turns purple!", "id": "Warna birunya dari bunga telang. Teteskan jeruk nipis dan warnanya berubah ungu seperti sulap!" },
+    "ingredients": [ "crab", "squid", "coconut_milk", "butterfly_pea", "nori" ],
+    "steps": [
+      { "kind": "Pick", "verb": "pick", "items": [ "crab", "squid", "butterfly_pea" ] },
+      { "kind": "Pour", "verb": "pour", "item": "butterfly_pea", "target": 0.62, "zone": 0.15 },
+      { "kind": "Heat", "verb": "simmer", "target": 0.66, "zone": 0.14, "speed": 0.34 },
+      { "kind": "Decorate", "verb": "decorate", "count": 4 }
+    ]
+  },
+  {
+    "id": "space_sushi", "region": "sakura", "difficulty": 3, "unlockLevel": 6, "coins": 60, "xp": 40, "color": "#5B3FD9", "model": null, "creative": true,
+    "name": { "en": "Space Sushi", "id": "Sushi Luar Angkasa" },
+    "description": { "en": "Galaxy fish sushi sprinkled with star sugar. Out of this world!", "id": "Sushi ikan galaksi bertabur gula bintang. Rasanya luar angkasa!" },
+    "funFact": { "en": "Astronauts on the space station eat tortillas instead of bread, because bread crumbs would float away and get into the machines.", "id": "Astronaut di stasiun luar angkasa makan tortila, bukan roti, karena remah roti bisa melayang dan masuk ke mesin." },
+    "ingredients": [ "galaxy_fish", "rice", "nori", "star_sugar" ],
+    "steps": [
+      { "kind": "Tap", "verb": "slice", "item": "galaxy_fish", "count": 10 },
+      { "kind": "Rhythm", "verb": "roll", "item": "nori", "count": 4, "zone": 0.16, "speed": 0.85 },
+      { "kind": "Pour", "verb": "sprinkle", "item": "star_sugar", "target": 0.45, "zone": 0.12 },
+      { "kind": "Decorate", "verb": "plate", "count": 6 }
+    ]
+  },
+
+  {
+    "id": "pizza", "region": "pasta", "difficulty": 2, "unlockLevel": 3, "coins": 36, "xp": 26, "color": "#E8423F", "model": "pizza", "creative": false,
+    "name": { "en": "Pizza Margherita", "id": "Pizza Margherita" },
+    "description": { "en": "Thin crust, tomato sauce, melted cheese and fresh basil.", "id": "Roti tipis, saus tomat, keju leleh, dan kemangi segar." },
+    "funFact": { "en": "Pizza Margherita was named after Queen Margherita of Italy in 1889. Red tomato, white cheese and green basil match the Italian flag.", "id": "Pizza Margherita dinamai dari Ratu Margherita dari Italia pada 1889. Tomat merah, keju putih, dan kemangi hijau sama seperti bendera Italia." },
+    "ingredients": [ "flour", "tomato", "cheese", "basil" ],
+    "steps": [
+      { "kind": "Tap", "verb": "knead", "item": "flour", "count": 12 },
+      { "kind": "Pour", "verb": "sauce", "item": "tomato", "target": 0.6, "zone": 0.16 },
+      { "kind": "Decorate", "verb": "decorate", "item": "cheese", "count": 5 },
+      { "kind": "Heat", "verb": "bake", "target": 0.7, "zone": 0.14, "speed": 0.36 }
+    ]
+  },
+  {
+    "id": "lasagna", "region": "pasta", "difficulty": 3, "unlockLevel": 3, "coins": 42, "xp": 30, "color": "#D2553A", "model": null, "creative": false,
+    "name": { "en": "Lasagna", "id": "Lasagna" },
+    "description": { "en": "Layers of pasta, meaty tomato sauce and creamy cheese, baked bubbly.", "id": "Lapisan pasta, saus tomat berdaging, dan keju lembut yang dipanggang sampai meletup." },
+    "funFact": { "en": "Lasagna is one of the oldest kinds of pasta. Recipes for layered pasta appear in an Italian cookbook from the 1300s.", "id": "Lasagna adalah salah satu jenis pasta tertua. Resep pasta berlapis sudah ada di buku masak Italia dari tahun 1300-an." },
+    "ingredients": [ "pasta", "beef", "tomato", "cheese", "milk" ],
+    "steps": [
+      { "kind": "Pick", "verb": "pick", "items": [ "pasta", "beef", "tomato", "cheese" ] },
+      { "kind": "Rhythm", "verb": "stir", "item": "tomato", "count": 3, "zone": 0.2, "speed": 0.7 },
+      { "kind": "Decorate", "verb": "layer", "item": "pasta", "count": 4 },
+      { "kind": "Heat", "verb": "bake", "target": 0.74, "zone": 0.13, "speed": 0.32 }
+    ]
+  },
+  {
+    "id": "gelato", "region": "pasta", "difficulty": 1, "unlockLevel": 3, "coins": 26, "xp": 18, "color": "#FF9BB3", "model": null, "creative": false,
+    "name": { "en": "Strawberry Gelato", "id": "Gelato Stroberi" },
+    "description": { "en": "Smooth, dense Italian ice cream made with fresh strawberries.", "id": "Es krim Italia yang lembut dan padat dari stroberi segar." },
+    "funFact": { "en": "Gelato is churned slowly, so it holds less air than ice cream. That makes it thicker and more flavourful.", "id": "Gelato diaduk perlahan sehingga udaranya lebih sedikit daripada es krim biasa. Hasilnya lebih padat dan rasanya lebih kuat." },
+    "ingredients": [ "milk", "sugar", "strawberry", "cream" ],
+    "steps": [
+      { "kind": "Tap", "verb": "mash", "item": "strawberry", "count": 9 },
+      { "kind": "Rhythm", "verb": "churn", "count": 4, "zone": 0.2, "speed": 0.6 },
+      { "kind": "Heat", "verb": "freeze", "target": 0.65, "zone": 0.18, "speed": 0.35 }
+    ]
+  },
+  {
+    "id": "spaghetti", "region": "pasta", "difficulty": 1, "unlockLevel": 3, "coins": 24, "xp": 16, "color": "#F06A3A", "model": null, "creative": false,
+    "name": { "en": "Spaghetti Pomodoro", "id": "Spageti Pomodoro" },
+    "description": { "en": "Long spaghetti tossed in a sweet tomato and basil sauce.", "id": "Spageti panjang diaduk dengan saus tomat manis dan kemangi." },
+    "funFact": { "en": "Tomatoes came to Italy from the Americas in the 1500s. At first, many Europeans only grew them as pretty plants!", "id": "Tomat dibawa ke Italia dari Benua Amerika pada tahun 1500-an. Awalnya banyak orang Eropa hanya menanamnya sebagai tanaman hias!" },
+    "ingredients": [ "pasta", "tomato", "basil", "garlic" ],
+    "steps": [
+      { "kind": "Heat", "verb": "boil", "item": "pasta", "target": 0.6, "zone": 0.17, "speed": 0.38 },
+      { "kind": "Tap", "verb": "chop", "item": "tomato", "count": 9 },
+      { "kind": "Rhythm", "verb": "stir", "count": 3, "zone": 0.22, "speed": 0.7 },
+      { "kind": "Decorate", "verb": "garnish", "item": "basil", "count": 3 }
+    ]
+  },
+  {
+    "id": "dinosaur_pizza", "region": "pasta", "difficulty": 2, "unlockLevel": 5, "coins": 50, "xp": 34, "color": "#5DBB4A", "model": null, "creative": true,
+    "name": { "en": "Dinosaur Pizza", "id": "Pizza Dinosaurus" },
+    "description": { "en": "A roaring pizza with broccoli-green spikes and corn teeth.", "id": "Pizza yang mengaum dengan duri hijau dan gigi jagung." },
+    "funFact": { "en": "Tomatoes are actually fruits, not vegetables, because they grow from a flower and hold seeds.", "id": "Tomat sebenarnya buah, bukan sayur, karena tumbuh dari bunga dan menyimpan biji." },
+    "ingredients": [ "flour", "tomato", "cheese", "corn", "basil" ],
+    "steps": [
+      { "kind": "Tap", "verb": "knead", "item": "flour", "count": 12 },
+      { "kind": "Tap", "verb": "shape", "item": "flour", "count": 8 },
+      { "kind": "Decorate", "verb": "decorate", "item": "corn", "count": 6 },
+      { "kind": "Heat", "verb": "bake", "target": 0.7, "zone": 0.14, "speed": 0.38 }
+    ]
+  },
+
+  {
+    "id": "dim_sum", "region": "dragonwok", "difficulty": 2, "unlockLevel": 4, "coins": 36, "xp": 26, "color": "#F6E7C8", "model": "dim_sum", "creative": false,
+    "name": { "en": "Dim Sum", "id": "Dim Sum" },
+    "description": { "en": "Shrimp dumplings with see-through wrappers, steamed in bamboo baskets.", "id": "Pangsit udang berkulit bening yang dikukus di keranjang bambu." },
+    "funFact": { "en": "Dim sum means 'touch the heart'. In southern China, families share many small baskets while drinking tea, called yum cha.", "id": "Dim sum berarti 'menyentuh hati'. Di Tiongkok selatan, keluarga berbagi banyak keranjang kecil sambil minum teh, disebut yum cha." },
+    "ingredients": [ "shrimp", "flour", "ginger", "green_onion" ],
+    "steps": [
+      { "kind": "Tap", "verb": "chop", "item": "shrimp", "count": 10 },
+      { "kind": "Decorate", "verb": "wrap", "item": "shrimp", "count": 5 },
+      { "kind": "Heat", "verb": "steam", "target": 0.62, "zone": 0.15, "speed": 0.36 }
+    ]
+  },
+  {
+    "id": "baozi", "region": "dragonwok", "difficulty": 2, "unlockLevel": 4, "coins": 32, "xp": 24, "color": "#FFF6E6", "model": null, "creative": false,
+    "name": { "en": "Baozi", "id": "Bakpao" },
+    "description": { "en": "Fluffy steamed buns with a savoury chicken filling.", "id": "Roti kukus empuk dengan isi ayam yang gurih." },
+    "funFact": { "en": "Expert bao makers fold 18 or more tiny pleats on top of every bun.", "id": "Pembuat bakpao yang ahli membuat 18 lipatan kecil atau lebih di atas setiap roti." },
+    "ingredients": [ "flour", "chicken", "ginger", "soy_sauce" ],
+    "steps": [
+      { "kind": "Tap", "verb": "knead", "item": "flour", "count": 12 },
+      { "kind": "Decorate", "verb": "fill", "item": "chicken", "count": 4 },
+      { "kind": "Rhythm", "verb": "pleat", "count": 4, "zone": 0.18, "speed": 0.75 },
+      { "kind": "Heat", "verb": "steam", "target": 0.66, "zone": 0.16, "speed": 0.34 }
+    ]
+  },
+  {
+    "id": "peking_duck", "region": "dragonwok", "difficulty": 3, "unlockLevel": 5, "coins": 48, "xp": 34, "color": "#A8501F", "model": null, "creative": false,
+    "name": { "en": "Peking Duck", "id": "Bebek Peking" },
+    "description": { "en": "Shiny roast duck with crispy skin, wrapped in thin pancakes.", "id": "Bebek panggang mengilap dengan kulit renyah, dibungkus dadar tipis." },
+    "funFact": { "en": "Peking duck was once served to emperors in Beijing. The chef carves the crispy skin at the table in front of the guests.", "id": "Bebek Peking dulu dihidangkan untuk kaisar di Beijing. Koki memotong kulit renyahnya langsung di depan para tamu." },
+    "ingredients": [ "duck", "sweet_soy", "cucumber", "green_onion", "flour" ],
+    "steps": [
+      { "kind": "Pour", "verb": "glaze", "item": "sweet_soy", "target": 0.6, "zone": 0.14 },
+      { "kind": "Heat", "verb": "roast", "item": "duck", "target": 0.78, "zone": 0.12, "speed": 0.3 },
+      { "kind": "Tap", "verb": "slice", "item": "duck", "count": 12 },
+      { "kind": "Decorate", "verb": "wrap", "item": "cucumber", "count": 4 }
+    ]
+  },
+  {
+    "id": "egg_tart", "region": "dragonwok", "difficulty": 1, "unlockLevel": 4, "coins": 24, "xp": 16, "color": "#FFD45C", "model": null, "creative": false,
+    "name": { "en": "Egg Tarts", "id": "Egg Tart" },
+    "description": { "en": "Flaky pastry cups filled with wobbly golden custard.", "id": "Cangkir pastri renyah berisi custard keemasan yang lembut bergoyang." },
+    "funFact": { "en": "Hong Kong egg tarts were inspired by British custard tarts, and Macau's version by Portuguese pastéis de nata.", "id": "Egg tart Hong Kong terinspirasi dari tart custard Inggris, sedangkan versi Makau dari pastéis de nata Portugis." },
+    "ingredients": [ "egg", "flour", "butter", "milk", "sugar" ],
+    "steps": [
+      { "kind": "Tap", "verb": "whisk", "item": "egg", "count": 12 },
+      { "kind": "Pour", "verb": "pour", "item": "milk", "target": 0.7, "zone": 0.16 },
+      { "kind": "Heat", "verb": "bake", "target": 0.62, "zone": 0.16, "speed": 0.36 }
+    ]
+  },
+  {
+    "id": "rainbow_dragon_noodles", "region": "dragonwok", "difficulty": 3, "unlockLevel": 6, "coins": 58, "xp": 40, "color": "#FF6FB5", "model": null, "creative": true,
+    "name": { "en": "Rainbow Dragon Noodles", "id": "Mi Naga Pelangi" },
+    "description": { "en": "Extra-long noodles in seven colours, with rainbow trout scales on top.", "id": "Mi ekstra panjang tujuh warna, dengan sisik trout pelangi di atasnya." },
+    "funFact": { "en": "In Chinese tradition, long noodles stand for a long life. That is why they are eaten on birthdays, and never cut!", "id": "Dalam tradisi Tionghoa, mi panjang melambangkan umur panjang. Karena itu mi dimakan saat ulang tahun dan tidak boleh dipotong!" },
+    "ingredients": [ "noodles", "rainbow_dye", "trout", "bok_choy", "soy_sauce" ],
+    "steps": [
+      { "kind": "Tap", "verb": "knead", "item": "noodles", "count": 14 },
+      { "kind": "Pour", "verb": "colour", "item": "rainbow_dye", "target": 0.5, "zone": 0.12 },
+      { "kind": "Rhythm", "verb": "stir", "count": 5, "zone": 0.16, "speed": 0.95 },
+      { "kind": "Decorate", "verb": "decorate", "item": "trout", "count": 5 }
+    ]
+  },
+
+  {
+    "id": "taco", "region": "fiesta", "difficulty": 1, "unlockLevel": 5, "coins": 30, "xp": 22, "color": "#F2B33D", "model": "taco", "creative": false,
+    "name": { "en": "Tacos", "id": "Taco" },
+    "description": { "en": "Crunchy corn shells with beef, lettuce, tomato and cheese.", "id": "Kulit jagung renyah berisi daging sapi, selada, tomat, dan keju." },
+    "funFact": { "en": "Corn was first grown in Mexico about 9,000 years ago from a wild grass called teosinte.", "id": "Jagung pertama kali ditanam di Meksiko sekitar 9.000 tahun lalu dari rumput liar bernama teosinte." },
+    "ingredients": [ "tortilla", "beef", "lettuce", "tomato", "cheese" ],
+    "steps": [
+      { "kind": "Heat", "verb": "fry", "item": "beef", "target": 0.66, "zone": 0.16, "speed": 0.38 },
+      { "kind": "Tap", "verb": "chop", "item": "lettuce", "count": 9 },
+      { "kind": "Decorate", "verb": "fill", "item": "tortilla", "count": 5 }
+    ]
+  },
+  {
+    "id": "burrito", "region": "fiesta", "difficulty": 2, "unlockLevel": 5, "coins": 34, "xp": 24, "color": "#E3B57A", "model": null, "creative": false,
+    "name": { "en": "Burrito", "id": "Burrito" },
+    "description": { "en": "A big soft tortilla rolled around rice, beans and cheese.", "id": "Tortila besar yang lembut, digulung berisi nasi, kacang merah, dan keju." },
+    "funFact": { "en": "Burrito means 'little donkey' in Spanish. Some say it is because the roll carries so much, like a donkey's pack!", "id": "Burrito berarti 'keledai kecil' dalam bahasa Spanyol. Konon karena gulungannya membawa banyak isi, seperti keledai pembawa barang!" },
+    "ingredients": [ "tortilla", "rice", "beans", "cheese", "avocado" ],
+    "steps": [
+      { "kind": "Pick", "verb": "pick", "items": [ "tortilla", "rice", "beans", "cheese" ] },
+      { "kind": "Tap", "verb": "mash", "item": "beans", "count": 10 },
+      { "kind": "Rhythm", "verb": "roll", "item": "tortilla", "count": 3, "zone": 0.2, "speed": 0.7 },
+      { "kind": "Heat", "verb": "grill", "target": 0.6, "zone": 0.17, "speed": 0.36 }
+    ]
+  },
+  {
+    "id": "churros", "region": "fiesta", "difficulty": 2, "unlockLevel": 5, "coins": 30, "xp": 22, "color": "#C98745", "model": null, "creative": false,
+    "name": { "en": "Churros", "id": "Churros" },
+    "description": { "en": "Crispy fried dough sticks rolled in cinnamon sugar, with chocolate to dip.", "id": "Stik adonan goreng renyah berbalut gula kayu manis, dengan cokelat untuk dicocol." },
+    "funFact": { "en": "Chocolate comes from cacao beans. The Maya and Aztecs drank it thousands of years ago, long before chocolate bars existed.", "id": "Cokelat berasal dari biji kakao. Suku Maya dan Aztek sudah meminumnya ribuan tahun lalu, jauh sebelum ada cokelat batangan." },
+    "ingredients": [ "flour", "sugar", "cinnamon", "chocolate", "butter" ],
+    "steps": [
+      { "kind": "Tap", "verb": "whisk", "item": "flour", "count": 12 },
+      { "kind": "Heat", "verb": "fry", "target": 0.64, "zone": 0.14, "speed": 0.42 },
+      { "kind": "Pour", "verb": "sprinkle", "item": "cinnamon", "target": 0.5, "zone": 0.16 },
+      { "kind": "Pour", "verb": "sauce", "item": "chocolate", "target": 0.62, "zone": 0.16 }
+    ]
+  },
+  {
+    "id": "guacamole", "region": "fiesta", "difficulty": 1, "unlockLevel": 5, "coins": 22, "xp": 16, "color": "#7FB23A", "model": null, "creative": false,
+    "name": { "en": "Guacamole", "id": "Guacamole" },
+    "description": { "en": "Creamy mashed avocado with tomato, onion and a squeeze of lime.", "id": "Alpukat lumat yang lembut dengan tomat, bawang, dan perasan jeruk nipis." },
+    "funFact": { "en": "The name comes from the Aztec word ahuacamolli, which means avocado sauce.", "id": "Namanya berasal dari kata Aztek ahuacamolli, yang berarti saus alpukat." },
+    "ingredients": [ "avocado", "tomato", "onion", "lime" ],
+    "steps": [
+      { "kind": "Tap", "verb": "mash", "item": "avocado", "count": 10 },
+      { "kind": "Tap", "verb": "chop", "item": "tomato", "count": 8 },
+      { "kind": "Pour", "verb": "squeeze", "item": "lime", "target": 0.45, "zone": 0.16 }
+    ]
+  },
+
+  {
+    "id": "unicorn_cake", "region": "dessert", "difficulty": 3, "unlockLevel": 6, "coins": 56, "xp": 38, "color": "#F7A8D8", "model": null, "creative": true,
+    "name": { "en": "Unicorn Cake", "id": "Kue Unicorn" },
+    "description": { "en": "A tall pastel cake with a golden horn and gummy candy flowers.", "id": "Kue pastel tinggi dengan tanduk emas dan bunga permen jeli." },
+    "funFact": { "en": "Food colours can come from plants: beetroot makes pink, turmeric makes yellow and butterfly pea flowers make blue.", "id": "Pewarna makanan bisa dari tumbuhan: bit membuat merah muda, kunyit membuat kuning, dan bunga telang membuat biru." },
+    "ingredients": [ "flour", "egg", "butter", "sugar", "rainbow_dye", "gummy_candy" ],
+    "steps": [
+      { "kind": "Tap", "verb": "whisk", "item": "egg", "count": 14 },
+      { "kind": "Pour", "verb": "colour", "item": "rainbow_dye", "target": 0.55, "zone": 0.13 },
+      { "kind": "Heat", "verb": "bake", "target": 0.68, "zone": 0.13, "speed": 0.34 },
+      { "kind": "Decorate", "verb": "decorate", "item": "gummy_candy", "count": 6 }
+    ]
+  },
+  {
+    "id": "rainbow_cupcake", "region": "dessert", "difficulty": 1, "unlockLevel": 6, "coins": 30, "xp": 22, "color": "#FF8FD1", "model": "rainbow_cupcake", "creative": false,
+    "name": { "en": "Rainbow Cupcake", "id": "Cupcake Pelangi" },
+    "description": { "en": "A soft vanilla cupcake under a swirl of rainbow frosting and sprinkles.", "id": "Cupcake vanila lembut di bawah pusaran krim pelangi dan meses." },
+    "funFact": { "en": "Cupcakes got their name in the 1800s because the ingredients were measured by the cup instead of being weighed.", "id": "Cupcake mendapat namanya di tahun 1800-an karena bahannya ditakar dengan cangkir, bukan ditimbang." },
+    "ingredients": [ "flour", "egg", "butter", "vanilla", "cream", "sprinkles" ],
+    "steps": [
+      { "kind": "Tap", "verb": "whisk", "item": "butter", "count": 10 },
+      { "kind": "Heat", "verb": "bake", "target": 0.62, "zone": 0.16, "speed": 0.36 },
+      { "kind": "Rhythm", "verb": "swirl", "item": "cream", "count": 3, "zone": 0.2, "speed": 0.7 },
+      { "kind": "Pour", "verb": "sprinkle", "item": "sprinkles", "target": 0.55, "zone": 0.18 }
+    ]
+  },
+  {
+    "id": "galaxy_donut", "region": "dessert", "difficulty": 2, "unlockLevel": 6, "coins": 44, "xp": 30, "color": "#6B4BFF", "model": "galaxy_donut", "creative": true,
+    "name": { "en": "Galaxy Donut", "id": "Donat Galaksi" },
+    "description": { "en": "A fluffy donut with a swirling purple-blue galaxy glaze and star sugar.", "id": "Donat empuk dengan glasir galaksi ungu-biru yang berpusar dan gula bintang." },
+    "funFact": { "en": "The hole in a donut is not just for fun. It lets the middle cook as fast as the outside.", "id": "Lubang donat bukan sekadar hiasan. Lubang itu membuat bagian tengah matang secepat bagian luarnya." },
+    "ingredients": [ "flour", "sugar", "milk", "rainbow_dye", "star_sugar" ],
+    "steps": [
+      { "kind": "Tap", "verb": "knead", "item": "flour", "count": 12 },
+      { "kind": "Heat", "verb": "fry", "target": 0.6, "zone": 0.15, "speed": 0.4 },
+      { "kind": "Rhythm", "verb": "swirl", "item": "rainbow_dye", "count": 4, "zone": 0.18, "speed": 0.8 },
+      { "kind": "Pour", "verb": "sprinkle", "item": "star_sugar", "target": 0.5, "zone": 0.16 }
+    ]
+  },
+  {
+    "id": "cloud_pancake", "region": "dessert", "difficulty": 2, "unlockLevel": 7, "coins": 46, "xp": 32, "color": "#DDEBFF", "model": null, "creative": true,
+    "name": { "en": "Cloud Pancake", "id": "Panekuk Awan" },
+    "description": { "en": "A super-fluffy, wobbly pancake that floats like a cloud, with blueberries.", "id": "Panekuk super empuk dan bergoyang yang ringan seperti awan, dengan bluberi." },
+    "funFact": { "en": "Fluffy soufflé pancakes get tall from egg whites whisked into thousands of tiny air bubbles.", "id": "Panekuk soufflé jadi tinggi karena putih telur dikocok menjadi ribuan gelembung udara kecil." },
+    "ingredients": [ "egg", "flour", "milk", "sugar", "blueberry" ],
+    "steps": [
+      { "kind": "Tap", "verb": "whisk", "item": "egg", "count": 16 },
+      { "kind": "Rhythm", "verb": "flip", "count": 3, "zone": 0.18, "speed": 0.7 },
+      { "kind": "Heat", "verb": "fry", "target": 0.52, "zone": 0.15, "speed": 0.3 },
+      { "kind": "Decorate", "verb": "garnish", "item": "blueberry", "count": 5 }
+    ]
+  },
+  {
+    "id": "robot_cookies", "region": "dessert", "difficulty": 1, "unlockLevel": 7, "coins": 38, "xp": 26, "color": "#5FD3A6", "model": null, "creative": true,
+    "name": { "en": "Robot Cookies", "id": "Kue Kering Robot" },
+    "description": { "en": "Square butter cookies with chocolate bolts and sprinkle buttons. Beep!", "id": "Kue mentega kotak dengan baut cokelat dan tombol meses. Bip!" },
+    "funFact": { "en": "The word cookie comes from the Dutch word koekje, which means little cake.", "id": "Kata cookie berasal dari bahasa Belanda koekje, yang berarti kue kecil." },
+    "ingredients": [ "flour", "butter", "sugar", "chocolate", "sprinkles" ],
+    "steps": [
+      { "kind": "Tap", "verb": "knead", "item": "butter", "count": 10 },
+      { "kind": "Tap", "verb": "shape", "item": "flour", "count": 8 },
+      { "kind": "Heat", "verb": "bake", "target": 0.6, "zone": 0.17, "speed": 0.38 },
+      { "kind": "Decorate", "verb": "decorate", "item": "chocolate", "count": 6 }
+    ]
+  }
+]

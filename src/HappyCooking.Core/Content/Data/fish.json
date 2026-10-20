@@ -1,0 +1,12 @@
+[
+  { "id": "sunny_salmon", "name": { "en": "Sunny Salmon", "id": "Salmon Ceria" }, "ingredient": "salmon", "rarity": "Common", "nightOnly": false, "coins": 6, "color": "#FF8C69" },
+  { "id": "tubby_tuna", "name": { "en": "Tubby Tuna", "id": "Tuna Gendut" }, "ingredient": "tuna", "rarity": "Common", "nightOnly": false, "coins": 6, "color": "#4A6FA5" },
+  { "id": "merry_mackerel", "name": { "en": "Merry Mackerel", "id": "Tenggiri Riang" }, "ingredient": "mackerel", "rarity": "Common", "nightOnly": false, "coins": 5, "color": "#8FA6B8" },
+  { "id": "shrimpy", "name": { "en": "Shrimpy", "id": "Udang Mungil" }, "ingredient": "shrimp", "rarity": "Common", "nightOnly": false, "coins": 5, "color": "#FF9E80" },
+  { "id": "octo_pal", "name": { "en": "Octo-Pal", "id": "Sobat Gurita" }, "ingredient": "octopus", "rarity": "Uncommon", "nightOnly": false, "coins": 12, "color": "#D9658A" },
+  { "id": "blue_crab", "name": { "en": "Blue Crab", "id": "Kepiting Biru" }, "ingredient": "crab", "rarity": "Uncommon", "nightOnly": false, "coins": 14, "color": "#3D7BD9" },
+  { "id": "gummy_fish", "name": { "en": "Gummy Fish", "id": "Ikan Jeli" }, "ingredient": "gummy_candy", "rarity": "Uncommon", "nightOnly": false, "coins": 12, "color": "#FF5FA2" },
+  { "id": "moon_squid", "name": { "en": "Moon Squid", "id": "Cumi Bulan" }, "ingredient": "squid", "rarity": "Rare", "nightOnly": true, "coins": 24, "color": "#E7E0FF" },
+  { "id": "rainbow_trout", "name": { "en": "Rainbow Trout", "id": "Trout Pelangi" }, "ingredient": "trout", "rarity": "Rare", "nightOnly": false, "coins": 26, "color": "#8FD3C8" },
+  { "id": "galaxy_fish", "name": { "en": "Galaxy Fish", "id": "Ikan Galaksi" }, "ingredient": "galaxy_fish", "rarity": "Legendary", "nightOnly": true, "coins": 80, "color": "#5B3FD9" }
+]

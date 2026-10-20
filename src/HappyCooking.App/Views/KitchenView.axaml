@@ -1,0 +1,179 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:HappyCooking.App.ViewModels"
+             xmlns:c="using:HappyCooking.App.Controls"
+             xmlns:svc="using:HappyCooking.App.Services"
+             x:Class="HappyCooking.App.Views.KitchenView"
+             x:DataType="vm:KitchenViewModel">
+  <Grid>
+    <c:StageHost Stage="{Binding Stage}" />
+
+    <!-- PREP: what we are making and what is in the pantry -->
+    <Border IsVisible="{Binding IsPrep}" Classes="sticker" HorizontalAlignment="Left" VerticalAlignment="Center"
+            Margin="28,92,0,128" Width="420" Padding="18">
+      <ScrollViewer>
+        <StackPanel Spacing="12">
+          <StackPanel Orientation="Horizontal" Spacing="10">
+            <Ellipse Width="34" Height="34" Fill="{Binding RecipeSwatch}" Stroke="{StaticResource InkBrush}" StrokeThickness="3" />
+            <TextBlock Text="{Binding RecipeName}" Classes="title" TextWrapping="Wrap" MaxWidth="330" />
+          </StackPanel>
+          <TextBlock Text="{Binding Description}" TextWrapping="Wrap" />
+          <Grid ColumnDefinitions="Auto,*">
+            <Border Width="56" Height="56" CornerRadius="28" ClipToBounds="True" BorderBrush="{StaticResource InkBrush}" BorderThickness="3">
+              <Image Source="{Binding HostPortrait}" Stretch="UniformToFill" />
+            </Border>
+            <Border Grid.Column="1" Classes="chip" Margin="10,0,0,0" CornerRadius="14" VerticalAlignment="Center">
+              <StackPanel>
+                <TextBlock Text="{Binding HostName}" FontWeight="ExtraBold" FontSize="13" />
+                <TextBlock Text="{Binding HostGreeting}" TextWrapping="Wrap" FontStyle="Italic" />
+              </StackPanel>
+            </Border>
+          </Grid>
+
+          <TextBlock Text="{svc:Tr kitchen.ingredients}" Classes="heading" FontSize="18" />
+          <ItemsControl ItemsSource="{Binding Ingredients}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate><WrapPanel ItemSpacing="6" LineSpacing="6" /></ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="vm:IngredientChip">
+                <Border CornerRadius="14" BorderThickness="2" Padding="4,3,10,3"
+                        BorderBrush="{StaticResource InkBrush}" Background="White" Classes.missing="{Binding IsMissing}">
+                  <Border.Styles>
+                    <Style Selector="Border.missing">
+                      <Setter Property="Background" Value="#FFE1DE" />
+                      <Setter Property="BorderBrush" Value="{StaticResource TomatoBrush}" />
+                    </Style>
+                  </Border.Styles>
+                  <StackPanel Orientation="Horizontal" Spacing="6">
+                    <Ellipse Width="18" Height="18" Fill="{Binding Swatch}" Stroke="{StaticResource InkBrush}" StrokeThickness="1.5" />
+                    <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14" />
+                    <TextBlock Text="{Binding HaveText}" Classes="small" />
+                  </StackPanel>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+
+          <TextBlock Text="{Binding MissingText}" FontWeight="Bold" TextWrapping="Wrap" />
+          <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button Classes="butter" IsVisible="{Binding HasMissing}" Command="{Binding BuyMissingCommand}">
+              <StackPanel Orientation="Horizontal" Spacing="6">
+                <Image Source="{Binding CoinIcon}" Width="22" />
+                <TextBlock Text="{svc:Tr kitchen.buy}" FontFamily="{StaticResource DisplayFont}" FontSize="18" VerticalAlignment="Center" />
+              </StackPanel>
+            </Button>
+            <Button Classes="primary" Content="{svc:Tr kitchen.start}" Command="{Binding StartCommand}" />
+          </StackPanel>
+          <Button Classes="small ghost" HorizontalAlignment="Left" Content="{svc:Tr common.back}" Command="{Binding BackCommand}" />
+        </StackPanel>
+      </ScrollViewer>
+    </Border>
+
+    <!-- COOKING: step card at the top -->
+    <Border IsVisible="{Binding IsCooking}" Classes="sticker" VerticalAlignment="Top" HorizontalAlignment="Center"
+            Margin="0,92,0,0" Padding="22,12" MinWidth="520">
+      <StackPanel Spacing="6" HorizontalAlignment="Center">
+        <Grid ColumnDefinitions="Auto,*,Auto">
+          <TextBlock Text="{Binding StepCounter}" Classes="small" FontWeight="ExtraBold" />
+          <TextBlock Grid.Column="2" Text="{Binding Feedback}" Classes="heading" FontSize="18" Foreground="{StaticResource TomatoBrush}" />
+        </Grid>
+        <TextBlock Text="{Binding StepTitle}" Classes="display" FontSize="38" TextAlignment="Center" />
+        <TextBlock Text="{Binding StepHint}" TextAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource InkSoftBrush}" />
+        <ProgressBar Value="{Binding OverallProgress}" Maximum="100" Height="10" MinHeight="10" Classes="butter" Margin="0,4,0,0" />
+      </StackPanel>
+    </Border>
+
+    <!-- COOKING: the mini-game controls above the dock -->
+    <StackPanel IsVisible="{Binding IsCooking}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,140" Spacing="16">
+
+      <c:MeterBar IsVisible="{Binding IsMeter}" Width="560" Height="42"
+                  Value="{Binding Meter}" ZoneMin="{Binding ZoneMin}" ZoneMax="{Binding ZoneMax}" />
+      <c:MeterBar IsVisible="{Binding IsRhythm}" Width="560" Height="42" IsMarker="True"
+                  Value="{Binding Marker}" ZoneMin="{Binding ZoneMin}" ZoneMax="{Binding ZoneMax}" />
+      <ProgressBar IsVisible="{Binding IsTap}" Value="{Binding StepProgress}" Maximum="100" Width="420" Height="22" MinHeight="22" Classes="tomato" />
+      <ProgressBar IsVisible="{Binding IsRhythm}" Value="{Binding StepProgress}" Maximum="100" Width="300" Height="14" HorizontalAlignment="Center" />
+
+      <!-- Pick: a tray of ingredients with decoys -->
+      <Border IsVisible="{Binding IsPick}" Classes="sticker warm" Padding="12">
+        <ItemsControl ItemsSource="{Binding Tray}" MaxWidth="760">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate><WrapPanel ItemSpacing="10" LineSpacing="10" HorizontalAlignment="Center" /></ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="vm:PickItem">
+              <Button Classes.picked="{Binding IsPicked}" Classes.wrong="{Binding IsWrong}" Width="132" Padding="8"
+                      Command="{Binding $parent[UserControl].((vm:KitchenViewModel)DataContext).PickCommand}" CommandParameter="{Binding}">
+                <Button.Styles>
+                  <Style Selector="Button.picked"><Setter Property="Background" Value="{StaticResource MintBrush}" /></Style>
+                  <Style Selector="Button.wrong"><Setter Property="Background" Value="{StaticResource TomatoBrush}" /></Style>
+                </Button.Styles>
+                <StackPanel Spacing="6">
+                  <Ellipse Width="46" Height="46" Fill="{Binding Swatch}" Stroke="{StaticResource InkBrush}" StrokeThickness="3" />
+                  <TextBlock Text="{Binding Name}" FontFamily="{StaticResource BodyFont}" FontWeight="ExtraBold" FontSize="14"
+                             TextAlignment="Center" TextWrapping="Wrap" />
+                </StackPanel>
+              </Button>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </Border>
+
+      <!-- Decorate: tap anywhere on the plate -->
+      <Grid IsVisible="{Binding IsDecorate}" HorizontalAlignment="Center">
+        <Border x:Name="PlatePad" Width="230" Height="230" CornerRadius="115" Background="White"
+                BorderBrush="{StaticResource InkBrush}" BorderThickness="4" BoxShadow="0 6 0 0 #2B2A6B" Cursor="Hand">
+          <Border Margin="26" CornerRadius="90" Background="{Binding RecipeSwatch}" Opacity="0.85" IsHitTestVisible="False" />
+        </Border>
+        <ProgressBar Value="{Binding StepProgress}" Maximum="100" Width="200" VerticalAlignment="Bottom" Margin="0,0,0,-24" IsHitTestVisible="False" />
+      </Grid>
+
+      <!-- The one big button -->
+      <Button x:Name="ActionButton" IsVisible="{Binding ShowActionButton}" Classes="primary" HorizontalAlignment="Center"
+              Command="{Binding ActionCommand}" FontSize="34" Padding="72,16" CornerRadius="28" Classes.inzone="{Binding InZone}">
+        <Button.Styles>
+          <Style Selector="Button.inzone"><Setter Property="Background" Value="{StaticResource MintBrush}" /></Style>
+        </Button.Styles>
+        <TextBlock Text="{Binding ActionLabel}" FontFamily="{StaticResource DisplayFont}" FontSize="34" />
+      </Button>
+    </StackPanel>
+
+    <!-- RESULT -->
+    <Grid IsVisible="{Binding IsResult}" Background="{StaticResource ScrimBrush}">
+      <Border Classes="sticker" Width="520" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="26,20">
+        <StackPanel Spacing="12">
+          <TextBlock Text="{Binding ResultTitle}" Classes="display" TextAlignment="Center" />
+          <TextBlock Text="{Binding RecipeName}" Classes="heading" TextAlignment="Center" Foreground="{StaticResource InkSoftBrush}" />
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="6">
+            <Image Source="{Binding StarIcon}" Width="76" Opacity="{Binding Star1}" />
+            <Image Source="{Binding StarIcon}" Width="96" Opacity="{Binding Star2}" Margin="0,-14,0,0" />
+            <Image Source="{Binding StarIcon}" Width="76" Opacity="{Binding Star3}" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="14">
+            <Border Classes="pill">
+              <StackPanel Orientation="Horizontal" Spacing="6">
+                <Image Source="{Binding CoinIcon}" Width="28" />
+                <TextBlock Text="{Binding RewardCoins}" Classes="heading" VerticalAlignment="Center" />
+              </StackPanel>
+            </Border>
+            <Border Classes="pill" Background="{StaticResource ButterBrush}">
+              <TextBlock Text="{Binding RewardXp}" Classes="heading" VerticalAlignment="Center" />
+            </Border>
+          </StackPanel>
+          <TextBlock Text="{Binding ResultNote}" TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" />
+          <Border Classes="chip" CornerRadius="16" Padding="14,10">
+            <StackPanel Spacing="4">
+              <TextBlock Text="{svc:Tr book.funFact}" Classes="heading" FontSize="16" />
+              <TextBlock Text="{Binding FunFact}" TextWrapping="Wrap" />
+            </StackPanel>
+          </Border>
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+            <Button Content="{svc:Tr kitchen.again}" Command="{Binding CookAgainCommand}" />
+            <Button Classes="go" Content="{svc:Tr kitchen.serve}" Command="{Binding ServeCommand}" />
+            <Button Classes="butter" Content="{svc:Tr kitchen.toMap}" Command="{Binding BackCommand}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </Grid>
+  </Grid>
+</UserControl>

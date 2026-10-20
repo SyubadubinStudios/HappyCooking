@@ -1,0 +1,50 @@
+[
+  {
+    "id": "chef_happy",
+    "name": { "en": "Chef Happy", "id": "Chef Happy" },
+    "role": { "en": "Head chef and your guide", "id": "Kepala koki dan pemandumu" },
+    "greeting": { "en": "Aprons on! Let's cook something amazing today!", "id": "Pakai celemek! Ayo masak sesuatu yang luar biasa hari ini!" },
+    "model": "chef_happy",
+    "color": "#FF5A4E"
+  },
+  {
+    "id": "coco_panda",
+    "name": { "en": "Coco the Panda", "id": "Coco si Panda" },
+    "role": { "en": "Dumpling master of Dragon Wok City", "id": "Ahli pangsit dari Kota Dragon Wok" },
+    "greeting": { "en": "Steam is ready, buns are fluffy. Shall we?", "id": "Kukusan sudah panas, bakpao sudah empuk. Mulai?" },
+    "model": "coco_panda",
+    "color": "#FF8FB1"
+  },
+  {
+    "id": "jenggo_chicken",
+    "name": { "en": "Jenggo the Chicken Chef", "id": "Jenggo si Koki Ayam" },
+    "role": { "en": "Pizza and pasta champion", "id": "Juara pizza dan pasta" },
+    "greeting": { "en": "Bawk! The oven is hot and so am I!", "id": "Petok! Ovennya panas, semangatku juga!" },
+    "model": "jenggo_chicken",
+    "color": "#FFC93C"
+  },
+  {
+    "id": "mochi_cat",
+    "name": { "en": "Mochi the Cat", "id": "Mochi si Kucing" },
+    "role": { "en": "Head waiter with a sweet tooth", "id": "Kepala pelayan yang suka manis" },
+    "greeting": { "en": "Purr-fect timing. The customers are hungry!", "id": "Pas sekali. Pelanggan sudah lapar!" },
+    "model": "mochi_cat",
+    "color": "#FFA45B"
+  },
+  {
+    "id": "pepper_bot",
+    "name": { "en": "Pepper Bot", "id": "Pepper Bot" },
+    "role": { "en": "Kitchen helper robot", "id": "Robot pembantu dapur" },
+    "greeting": { "en": "Beep boop! Seasoning systems online.", "id": "Bip bup! Sistem bumbu siap digunakan." },
+    "model": "pepper_bot",
+    "color": "#5FD3A6"
+  },
+  {
+    "id": "burnt_onion",
+    "name": { "en": "Mr. Burnt Onion", "id": "Tuan Bawang Gosong" },
+    "role": { "en": "Grumpy troublemaker who loves burnt food", "id": "Pembuat onar pemarah yang suka makanan gosong" },
+    "greeting": { "en": "Hmph! A little more heat never hurt anybody...", "id": "Hmph! Sedikit lebih panas tidak apa-apa kok..." },
+    "model": "burnt_onion",
+    "color": "#8A5A3C"
+  }
+]

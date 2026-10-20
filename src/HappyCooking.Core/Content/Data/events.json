@@ -1,0 +1,17 @@
+[
+  { "id": "e_lunar_new_year", "startMonth": 1, "startDay": 20, "endMonth": 2, "endDay": 20, "coinMultiplier": 1.5, "featuredRecipes": [ "dim_sum", "baozi", "rainbow_dragon_noodles" ], "color": "#E8423F",
+    "name": { "en": "Lunar New Year Feast", "id": "Pesta Tahun Baru Imlek" },
+    "description": { "en": "Lanterns everywhere! Long noodles and dumplings earn extra coins.", "id": "Lampion di mana-mana! Mi panjang dan pangsit memberi koin ekstra." } },
+  { "id": "e_spring_blossom", "startMonth": 3, "startDay": 20, "endMonth": 4, "endDay": 20, "coinMultiplier": 1.3, "featuredRecipes": [ "sushi", "onigiri", "gelato" ], "color": "#FF8FB1",
+    "name": { "en": "Blossom Picnic", "id": "Piknik Musim Semi" },
+    "description": { "en": "Pack a picnic under the cherry trees.", "id": "Siapkan bekal piknik di bawah pohon sakura." } },
+  { "id": "e_merdeka", "startMonth": 8, "startDay": 10, "endMonth": 8, "endDay": 24, "coinMultiplier": 1.7, "featuredRecipes": [ "nasi_goreng", "sate", "klepon", "rendang" ], "color": "#E8302A",
+    "name": { "en": "Indonesian Independence Cook-Off", "id": "Lomba Masak 17 Agustus" },
+    "description": { "en": "Celebrate 17 August with red-and-white flags and Nusantara favourites!", "id": "Rayakan 17 Agustus dengan bendera merah putih dan hidangan favorit Nusantara!" } },
+  { "id": "e_spooky", "startMonth": 10, "startDay": 15, "endMonth": 11, "endDay": 2, "coinMultiplier": 1.5, "featuredRecipes": [ "galaxy_donut", "robot_cookies", "churros" ], "color": "#FF7A1A",
+    "name": { "en": "Spooky Snacks Week", "id": "Pekan Camilan Seram" },
+    "description": { "en": "Not-so-scary treats for costume parties. Mr. Burnt Onion is wearing a cape!", "id": "Camilan yang tidak terlalu seram untuk pesta kostum. Tuan Bawang Gosong pakai jubah!" } },
+  { "id": "e_winter", "startMonth": 12, "startDay": 10, "endMonth": 12, "endDay": 31, "coinMultiplier": 1.5, "featuredRecipes": [ "unicorn_cake", "cloud_pancake", "rainbow_cupcake" ], "color": "#7FD1FF",
+    "name": { "en": "Winter Wonder Treats", "id": "Hidangan Musim Dingin" },
+    "description": { "en": "Snowy sweets and cosy cakes to end the year.", "id": "Kue bersalju dan hidangan hangat untuk menutup tahun." } }
+]

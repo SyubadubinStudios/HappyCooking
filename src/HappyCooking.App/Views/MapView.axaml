@@ -1,0 +1,148 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:HappyCooking.App.ViewModels"
+             xmlns:svc="using:HappyCooking.App.Services"
+             x:Class="HappyCooking.App.Views.MapView"
+             x:DataType="vm:MapViewModel">
+  <Grid Margin="{StaticResource PageMargin}" ColumnDefinitions="*,18,410">
+
+    <!-- The world map, scaled to fit, with a sticker pin on every island -->
+    <Border Classes="sticker" Padding="8" VerticalAlignment="Center">
+      <Viewbox Stretch="Uniform">
+        <Grid Width="1600" Height="893">
+          <Border CornerRadius="16" ClipToBounds="True">
+            <Image Source="{Binding MapImage}" Stretch="Fill" />
+          </Border>
+          <ItemsControl ItemsSource="{Binding Pins}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate><Canvas /></ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.Styles>
+              <Style Selector="ContentPresenter" x:DataType="vm:RegionPin">
+                <Setter Property="Canvas.Left" Value="{Binding Left}" />
+                <Setter Property="Canvas.Top" Value="{Binding Top}" />
+              </Style>
+            </ItemsControl.Styles>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="vm:RegionPin">
+                <Button Width="260" Padding="12,8" CornerRadius="40" FontSize="30"
+                        Background="{Binding Brush}" Classes.locked="{Binding !IsUnlocked}"
+                        Command="{Binding $parent[UserControl].((vm:MapViewModel)DataContext).SelectCommand}"
+                        CommandParameter="{Binding}">
+                  <Button.Styles>
+                    <Style Selector="Button.locked">
+                      <Setter Property="Opacity" Value="0.72" />
+                    </Style>
+                  </Button.Styles>
+                  <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding Name}" Foreground="White" FontFamily="{StaticResource DisplayFont}" FontSize="31"
+                               TextAlignment="Center" TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding LockText}" IsVisible="{Binding !IsUnlocked}" Foreground="White"
+                               FontSize="20" FontWeight="Bold" TextAlignment="Center" />
+                  </StackPanel>
+                </Button>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </Grid>
+      </Viewbox>
+    </Border>
+
+    <!-- Island card: picture, host, dishes -->
+    <DockPanel Grid.Column="2">
+
+      <Border DockPanel.Dock="Top" Classes="sticker" Padding="0" ClipToBounds="True">
+        <Grid RowDefinitions="96,Auto">
+          <Image Source="{Binding RegionImage}" Stretch="UniformToFill" />
+          <Border Background="#B32B2A6B" VerticalAlignment="Bottom" Padding="14,6">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock Text="{Binding RegionName}" Classes="title onDark" FontSize="26" />
+              <TextBlock Grid.Column="1" Text="{Binding WeatherText}" Classes="onDark" FontWeight="Bold" VerticalAlignment="Center" />
+            </Grid>
+          </Border>
+          <StackPanel Grid.Row="1" Margin="14,10,14,12" Spacing="8">
+            <TextBlock Text="{Binding RegionDescription}" TextWrapping="Wrap" />
+            <Grid ColumnDefinitions="Auto,*">
+              <Border Width="54" Height="54" CornerRadius="27" ClipToBounds="True" BorderBrush="{StaticResource InkBrush}" BorderThickness="3">
+                <Image Source="{Binding HostPortrait}" Stretch="UniformToFill" />
+              </Border>
+              <Border Grid.Column="1" Classes="chip" Margin="10,0,0,0" VerticalAlignment="Center" CornerRadius="14">
+                <TextBlock Text="{Binding HostLine}" TextWrapping="Wrap" FontStyle="Italic" FontWeight="SemiBold" />
+              </Border>
+            </Grid>
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <!-- Quests in progress -->
+      <Border DockPanel.Dock="Bottom" Classes="sticker" Margin="0,14,0,0" Padding="10,8">
+        <StackPanel Spacing="6">
+          <TextBlock Text="{svc:Tr map.quests}" Classes="heading" FontSize="18" />
+          <ItemsControl ItemsSource="{Binding Quests}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate><StackPanel Spacing="6" /></ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="vm:QuestCard">
+                <Grid ColumnDefinitions="Auto,*,Auto">
+                  <Border Width="34" Height="34" CornerRadius="17" ClipToBounds="True" BorderBrush="{StaticResource InkBrush}" BorderThickness="2">
+                    <Image Source="{Binding Portrait}" Stretch="UniformToFill" />
+                  </Border>
+                  <StackPanel Grid.Column="1" Margin="8,0" Spacing="2">
+                    <TextBlock Text="{Binding Title}" FontWeight="ExtraBold" TextTrimming="CharacterEllipsis" />
+                    <ProgressBar Value="{Binding Progress}" Maximum="100" Height="9" MinHeight="9" />
+                  </StackPanel>
+                  <TextBlock Grid.Column="2" Text="{Binding ProgressText}" FontWeight="ExtraBold" VerticalAlignment="Center" />
+                </Grid>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sticker warm" Margin="0,14,0,0" Padding="10">
+        <ScrollViewer>
+          <ItemsControl ItemsSource="{Binding Recipes}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate><StackPanel Spacing="8" /></ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="vm:RecipeCard">
+                <Border Background="White" CornerRadius="16" BorderBrush="{StaticResource InkBrush}" BorderThickness="2" Padding="8">
+                  <Grid ColumnDefinitions="Auto,*,Auto">
+                    <Ellipse Width="40" Height="40" Fill="{Binding Swatch}" Stroke="{StaticResource InkBrush}" StrokeThickness="2" />
+                    <StackPanel Grid.Column="1" Margin="10,0" VerticalAlignment="Center">
+                      <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="{Binding Name}" Classes="heading" FontSize="18" />
+                        <Border Classes="chip" Background="{StaticResource GrapeBrush}" Padding="6,0" IsVisible="{Binding IsCreative}">
+                          <TextBlock Text="{svc:Tr book.creativeTag}" Classes="onDark" FontSize="11" FontWeight="Bold" />
+                        </Border>
+                        <Border Classes="chip" Background="{StaticResource TomatoBrush}" Padding="6,0" IsVisible="{Binding IsFeatured}">
+                          <TextBlock Text="{svc:Tr book.eventTag}" Classes="onDark" FontSize="11" FontWeight="Bold" />
+                        </Border>
+                      </StackPanel>
+                      <StackPanel Orientation="Horizontal" Spacing="2">
+                        <Image Source="{Binding StarIcon}" Width="18" Opacity="{Binding Star1}" />
+                        <Image Source="{Binding StarIcon}" Width="18" Opacity="{Binding Star2}" />
+                        <Image Source="{Binding StarIcon}" Width="18" Opacity="{Binding Star3}" />
+                        <TextBlock Text="{Binding Difficulty}" Classes="small" Margin="8,0,0,0" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding LockText}" IsVisible="{Binding IsLocked}" Classes="small" Margin="8,0,0,0" VerticalAlignment="Center" />
+                      </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6">
+                      <Button Classes="small" Content="{svc:Tr common.info}"
+                              Command="{Binding $parent[UserControl].((vm:MapViewModel)DataContext).ViewRecipeCommand}" CommandParameter="{Binding}" />
+                      <Button Classes="small go" Content="{svc:Tr common.cook}" IsEnabled="{Binding !IsLocked}"
+                              Command="{Binding $parent[UserControl].((vm:MapViewModel)DataContext).CookCommand}" CommandParameter="{Binding}" />
+                    </StackPanel>
+                  </Grid>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </Border>
+
+    </DockPanel>
+  </Grid>
+</UserControl>

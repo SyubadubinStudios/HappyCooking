@@ -1,0 +1,92 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:HappyCooking.App.ViewModels"
+             xmlns:svc="using:HappyCooking.App.Services"
+             x:Class="HappyCooking.App.Views.FriendsView"
+             x:DataType="vm:FriendsViewModel">
+  <DockPanel Margin="{StaticResource PageMargin}">
+    <StackPanel DockPanel.Dock="Top" Margin="6,0,0,10">
+      <TextBlock Text="{svc:Tr friends.title}" Classes="display onDark" />
+      <TextBlock Text="{svc:Tr friends.subtitle}" Classes="onDark" FontWeight="Bold" />
+    </StackPanel>
+
+    <ScrollViewer>
+      <WrapPanel ItemSpacing="16" LineSpacing="16" HorizontalAlignment="Center">
+
+        <!-- Your code + friends -->
+        <Border Classes="sticker" Width="380" VerticalAlignment="Top">
+          <StackPanel Spacing="10">
+            <TextBlock Text="{svc:Tr friends.yourCode}" Classes="heading" />
+            <Border Classes="pill" Background="{StaticResource ButterBrush}" HorizontalAlignment="Left" Padding="18,6">
+              <TextBlock Text="{Binding MyCode}" Classes="title" FontSize="30" LetterSpacing="4" />
+            </Border>
+            <TextBlock Text="{svc:Tr friends.codeHelp}" TextWrapping="Wrap" FontSize="14" />
+            <TextBlock Text="{svc:Tr friends.list}" Classes="heading" FontSize="18" Margin="0,6,0,0" />
+            <TextBlock Text="{svc:Tr friends.none}" IsVisible="{Binding !HasFriends}" TextWrapping="Wrap" />
+            <ItemsControl ItemsSource="{Binding Friends}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate><StackPanel Spacing="6" /></ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:FriendCard">
+                  <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="6" Classes.butter="{Binding IsSelected}"
+                          Command="{Binding $parent[UserControl].((vm:FriendsViewModel)DataContext).SelectFriendCommand}" CommandParameter="{Binding}">
+                    <Grid ColumnDefinitions="Auto,*,Auto">
+                      <Border Width="36" Height="36" CornerRadius="18" Background="{StaticResource SodaBrush}" BorderBrush="{StaticResource InkBrush}" BorderThickness="2">
+                        <TextBlock Text="{Binding Initial}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource DisplayFont}" />
+                      </Border>
+                      <StackPanel Grid.Column="1" Margin="8,0">
+                        <TextBlock Text="{Binding Name}" FontFamily="{StaticResource BodyFont}" FontWeight="ExtraBold" FontSize="15" />
+                        <TextBlock Text="{Binding Code}" FontFamily="{StaticResource BodyFont}" FontSize="12" />
+                      </StackPanel>
+                      <Button Grid.Column="2" Classes="small ghost" Content="✕" FontSize="14"
+                              Command="{Binding $parent[UserControl].((vm:FriendsViewModel)DataContext).RemoveFriendCommand}" CommandParameter="{Binding}" />
+                    </Grid>
+                  </Button>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Border Classes="chip" CornerRadius="16" Padding="10">
+              <StackPanel Spacing="6">
+                <TextBlock Text="{svc:Tr friends.add}" Classes="heading" FontSize="16" />
+                <TextBox Text="{Binding NewFriendCode}" Watermark="{svc:Tr friends.codeWatermark}" MaxLength="10" />
+                <TextBox Text="{Binding NewFriendName}" Watermark="{svc:Tr friends.nameWatermark}" MaxLength="20" />
+                <Button Classes="small go" Content="{svc:Tr friends.addButton}" Command="{Binding AddFriendCommand}" HorizontalAlignment="Left" />
+                <TextBlock Text="{Binding FriendMessage}" FontWeight="Bold" TextWrapping="Wrap" />
+              </StackPanel>
+            </Border>
+          </StackPanel>
+        </Border>
+
+        <!-- Send a gift -->
+        <Border Classes="sticker warm" Width="380" VerticalAlignment="Top">
+          <StackPanel Spacing="10">
+            <TextBlock Text="{svc:Tr friends.sendGift}" Classes="heading" />
+            <TextBlock Text="{svc:Tr friends.giftHelp}" TextWrapping="Wrap" FontSize="14" />
+            <ComboBox ItemsSource="{Binding GiftOptions}" SelectedItem="{Binding SelectedGift}" HorizontalAlignment="Stretch" />
+            <NumericUpDown Value="{Binding GiftAmount}" Minimum="1" Maximum="100" Increment="1" FormatString="0" />
+            <Button Classes="primary" Content="{svc:Tr friends.makeGift}" Command="{Binding CreateGiftCommand}" HorizontalAlignment="Left" />
+            <Border IsVisible="{Binding HasGiftCode}" Background="White" CornerRadius="14" BorderBrush="{StaticResource InkBrush}" BorderThickness="2" Padding="10">
+              <StackPanel Spacing="6">
+                <SelectableTextBlock Text="{Binding GiftCode}" FontFamily="{StaticResource DisplayFont}" FontSize="18" TextWrapping="Wrap" />
+                <Button Classes="small" Content="{svc:Tr friends.copy}" Command="{Binding CopyGiftCommand}" HorizontalAlignment="Left" />
+              </StackPanel>
+            </Border>
+            <TextBlock Text="{Binding GiftMessage}" FontWeight="Bold" TextWrapping="Wrap" />
+          </StackPanel>
+        </Border>
+
+        <!-- Open a gift -->
+        <Border Classes="sticker" Width="380" VerticalAlignment="Top">
+          <StackPanel Spacing="10">
+            <TextBlock Text="{svc:Tr friends.openGift}" Classes="heading" />
+            <TextBlock Text="{svc:Tr friends.openHelp}" TextWrapping="Wrap" FontSize="14" />
+            <TextBox Text="{Binding RedeemCode}" Watermark="HC1-...." AcceptsReturn="False" TextWrapping="Wrap" />
+            <Button Classes="go" Content="{svc:Tr friends.open}" Command="{Binding RedeemCommand}" HorizontalAlignment="Left" />
+            <TextBlock Text="{Binding RedeemMessage}" FontWeight="Bold" TextWrapping="Wrap" />
+          </StackPanel>
+        </Border>
+      </WrapPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

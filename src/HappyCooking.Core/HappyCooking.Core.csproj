@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Engine-agnostic game rules and content. No UI, rendering or storage
+    dependencies, so it runs unchanged on desktop, Android, iOS and in tests.
+  -->
+  <PropertyGroup>
+    <RootNamespace>HappyCooking.Core</RootNamespace>
+    <IsTrimmable>true</IsTrimmable>
+    <IsAotCompatible>true</IsAotCompatible>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Data\*.json" LogicalName="HappyCooking.Content.%(Filename).json" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="HappyCooking.Core.Tests" />
+  </ItemGroup>
+</Project>

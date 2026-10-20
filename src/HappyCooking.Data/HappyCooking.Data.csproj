@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Persistence: SQLite save store and folder-based cloud save. -->
+  <PropertyGroup>
+    <RootNamespace>HappyCooking.Data</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HappyCooking.Core\HappyCooking.Core.csproj" />
+  </ItemGroup>
+</Project>

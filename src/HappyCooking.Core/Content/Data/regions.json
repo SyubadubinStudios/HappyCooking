@@ -1,0 +1,62 @@
+[
+  {
+    "id": "nusantara",
+    "name": { "en": "Nusantara Island", "id": "Pulau Nusantara" },
+    "description": { "en": "Spice-scented jungle island where rendang simmers all day and satay smoke drifts over the beach.", "id": "Pulau hutan beraroma rempah, tempat rendang dimasak seharian dan asap sate melayang di pantai." },
+    "unlockLevel": 1,
+    "color": "#3FB37F",
+    "host": "chef_happy",
+    "mapX": 0.26, "mapY": 0.22,
+    "fish": [ "merry_mackerel", "shrimpy", "blue_crab", "galaxy_fish" ]
+  },
+  {
+    "id": "sakura",
+    "name": { "en": "Sakura Island", "id": "Pulau Sakura" },
+    "description": { "en": "Cherry blossoms, quiet gardens and the neatest sushi rolls in the world.", "id": "Bunga sakura, taman yang tenang, dan gulungan sushi paling rapi di dunia." },
+    "unlockLevel": 2,
+    "color": "#FF8FB1",
+    "host": "mochi_cat",
+    "mapX": 0.17, "mapY": 0.55,
+    "fish": [ "sunny_salmon", "tubby_tuna", "octo_pal", "galaxy_fish" ]
+  },
+  {
+    "id": "pasta",
+    "name": { "en": "Pasta Kingdom", "id": "Kerajaan Pasta" },
+    "description": { "en": "A hill town of wood-fired ovens, cheesy pizzas and cool gelato.", "id": "Kota bukit dengan oven kayu, pizza berkeju, dan gelato yang segar." },
+    "unlockLevel": 3,
+    "color": "#FF7A45",
+    "host": "jenggo_chicken",
+    "mapX": 0.51, "mapY": 0.44,
+    "fish": [ "tubby_tuna", "shrimpy", "moon_squid" ]
+  },
+  {
+    "id": "dragonwok",
+    "name": { "en": "Dragon Wok City", "id": "Kota Dragon Wok" },
+    "description": { "en": "Red lanterns, sizzling woks and bamboo baskets full of dumplings.", "id": "Lampion merah, wajan berdesis, dan keranjang bambu penuh pangsit." },
+    "unlockLevel": 4,
+    "color": "#E8423F",
+    "host": "coco_panda",
+    "mapX": 0.81, "mapY": 0.28,
+    "fish": [ "shrimpy", "blue_crab", "rainbow_trout" ]
+  },
+  {
+    "id": "fiesta",
+    "name": { "en": "Fiesta Mexico", "id": "Fiesta Meksiko" },
+    "description": { "en": "A sunny village of colourful flags, crunchy tacos and cinnamon churros.", "id": "Desa cerah dengan bendera warna-warni, taco renyah, dan churros kayu manis." },
+    "unlockLevel": 5,
+    "color": "#FFB020",
+    "host": "pepper_bot",
+    "mapX": 0.35, "mapY": 0.82,
+    "fish": [ "merry_mackerel", "moon_squid", "shrimpy" ]
+  },
+  {
+    "id": "dessert",
+    "name": { "en": "Dessert Wonderland", "id": "Negeri Ajaib Hidangan Penutup" },
+    "description": { "en": "Cake mountains, a chocolate waterfall and a rainbow you can almost taste.", "id": "Gunung kue, air terjun cokelat, dan pelangi yang hampir bisa dicicipi." },
+    "unlockLevel": 6,
+    "color": "#B57BFF",
+    "host": "mochi_cat",
+    "mapX": 0.78, "mapY": 0.72,
+    "fish": [ "gummy_fish", "rainbow_trout", "galaxy_fish" ]
+  }
+]

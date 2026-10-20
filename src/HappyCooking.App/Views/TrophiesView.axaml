@@ -1,0 +1,100 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:HappyCooking.App.ViewModels"
+             xmlns:svc="using:HappyCooking.App.Services"
+             x:Class="HappyCooking.App.Views.TrophiesView"
+             x:DataType="vm:TrophiesViewModel">
+  <DockPanel Margin="{StaticResource PageMargin}">
+    <StackPanel DockPanel.Dock="Top" Margin="6,0,0,10">
+      <TextBlock Text="{svc:Tr trophy.title}" Classes="display onDark" />
+      <TextBlock Text="{Binding Summary}" Classes="onDark" FontWeight="Bold" />
+    </StackPanel>
+
+    <Grid ColumnDefinitions="*,18,360">
+    <ScrollViewer>
+      <ItemsControl ItemsSource="{Binding Trophies}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate><WrapPanel ItemSpacing="12" LineSpacing="12" /></ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate x:DataType="vm:TrophyCard">
+            <Border Classes="sticker" Width="250" Padding="12" Opacity="{Binding Opacity}">
+              <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                <Image Source="{Binding Icon}" Width="56" Height="56" Grid.RowSpan="2" />
+                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                  <TextBlock Text="{Binding Title}" Classes="heading" FontSize="17" TextWrapping="Wrap" />
+                  <TextBlock Text="{Binding Description}" FontSize="13" TextWrapping="Wrap" />
+                </StackPanel>
+                <Grid Grid.Row="1" Grid.Column="1" Margin="10,6,0,0" ColumnDefinitions="*,Auto,Auto">
+                  <ProgressBar Value="{Binding Progress}" Maximum="100" Height="9" MinHeight="9" VerticalAlignment="Center" Classes="butter" />
+                  <TextBlock Grid.Column="1" Text="{Binding ProgressText}" FontSize="12" FontWeight="ExtraBold" Margin="6,0" />
+                  <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Image Source="{Binding $parent[UserControl].((vm:TrophiesViewModel)DataContext).GemIcon}" Width="16" />
+                    <TextBlock Text="{Binding Reward}" FontSize="12" FontWeight="ExtraBold" />
+                  </StackPanel>
+                </Grid>
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+
+    <ScrollViewer Grid.Column="2"><StackPanel Spacing="12">
+      <Border Classes="sticker warm" Padding="12">
+        <ItemsControl ItemsSource="{Binding Stats}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate><UniformGrid Columns="2" /></ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="vm:StatTile">
+              <StackPanel Orientation="Horizontal" Spacing="8" Margin="4">
+                <Image Source="{Binding Icon}" Width="34" />
+                <StackPanel>
+                  <TextBlock Text="{Binding Value}" Classes="heading" FontSize="20" />
+                  <TextBlock Text="{Binding Label}" Classes="small" />
+                </StackPanel>
+              </StackPanel>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </Border>
+      <Border Classes="sticker" Padding="12">
+        <StackPanel Spacing="8">
+          <TextBlock Text="{svc:Tr map.quests}" Classes="heading" />
+          <ScrollViewer MaxHeight="300">
+            <ItemsControl ItemsSource="{Binding Quests}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate><StackPanel Spacing="10" /></ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:QuestCard">
+                  <Grid ColumnDefinitions="Auto,*">
+                    <Border Width="40" Height="40" CornerRadius="20" ClipToBounds="True" BorderBrush="{StaticResource InkBrush}" BorderThickness="2" VerticalAlignment="Top">
+                      <Image Source="{Binding Portrait}" Stretch="UniformToFill" />
+                    </Border>
+                    <StackPanel Grid.Column="1" Margin="8,0,0,0" Spacing="2">
+                      <TextBlock Text="{Binding Title}" FontWeight="ExtraBold" />
+                      <TextBlock Text="{Binding Description}" FontSize="13" TextWrapping="Wrap" />
+                      <Grid ColumnDefinitions="*,Auto">
+                        <ProgressBar Value="{Binding Progress}" Maximum="100" Height="9" MinHeight="9" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="1" Text="{Binding ProgressText}" FontSize="12" FontWeight="ExtraBold" Margin="6,0,0,0" />
+                      </Grid>
+                      <StackPanel Orientation="Horizontal" Spacing="4">
+                        <Image Source="{Binding CoinIcon}" Width="16" />
+                        <TextBlock Text="{Binding RewardCoins}" FontSize="12" FontWeight="ExtraBold" />
+                        <Image Source="{Binding GemIcon}" Width="16" IsVisible="{Binding HasGems}" Margin="6,0,0,0" />
+                        <TextBlock Text="{Binding RewardGems}" FontSize="12" FontWeight="ExtraBold" IsVisible="{Binding HasGems}" />
+                      </StackPanel>
+                    </StackPanel>
+                  </Grid>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </ScrollViewer>
+        </StackPanel>
+      </Border>
+    </StackPanel></ScrollViewer>
+    </Grid>
+  </DockPanel>
+</UserControl>

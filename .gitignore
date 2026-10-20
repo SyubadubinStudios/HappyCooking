@@ -426,3 +426,12 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# --- Happy Cooking ---
+artifacts/
+*.blend1
+# Raw Rodin exports (~131 MB). Kept locally for tools/blender/process_assets.py; see docs/en/asset-pipeline.md.
+assets/raw/
+# Local MCP config and generation logs
+.mcp.json
+*_History.json
